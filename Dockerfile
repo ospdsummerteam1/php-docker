@@ -1,5 +1,9 @@
 FROM php:5.6-apache
 
+# www-dataの権限
+RUN usermod -u 1000 www-data \
+    && groupmod -g 1000 www-data
+
 # PHPのインストール
 RUN apt-get update \
     && apt-get install -y \
@@ -20,6 +24,7 @@ RUN cd /etc/apache2/mods-enabled \
 # composerのインストール
 RUN cd /usr/bin && curl -s http://getcomposer.org/installer | php && ln -s /usr/bin/composer.phar /usr/bin/composer
 RUN apt-get install -y git && composer global require "laravel/installer=~1.1"
+
 
 WORKDIR /var/www/html
 

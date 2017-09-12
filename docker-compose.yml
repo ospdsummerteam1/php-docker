@@ -18,7 +18,7 @@ laravel-db:
   command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci --init-connect="SET NAMES utf8" --innodb_file_per_table=1 --innodb_file_format=BARRACUDA
   environment:
     MYSQL_ROOT_PASSWORD: pass
-    MYSQL_DATABASE: laravel
+    MYSQL_DATABASE: collectors
   ports:
     - "13306:3306"
   volumes_from:

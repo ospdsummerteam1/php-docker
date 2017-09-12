@@ -4,10 +4,9 @@
 ## setup
 ```
 docker-compose build
-cd laravel-php
+cd laravel-app
 composer install
 cd ..
-chown -R www-data:www-data .
 docker-compose up
 
 access to http://localhost:8080
