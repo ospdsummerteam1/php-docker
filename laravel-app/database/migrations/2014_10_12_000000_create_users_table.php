@@ -13,13 +13,15 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $sql = 'CREATE TABLE `users` (
+            `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+            `icon` text,
+            `user_name` char(50) DEFAULT NULL,
+            `introduction` text,
+            PRIMARY KEY (`user_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=latin1;';
+            DB::connection()->getPdo()->exec($sql);
         });
     }
 
