@@ -1,7 +1,6 @@
 # php-docker
 環境構築
 
-
 ## setup
 ```
 docker-compose build
@@ -14,9 +13,9 @@ docker-compose up
 access to http://localhost:8080
 ```
 
-###mysql login
+### mysql login
 ```
-mysql -uroot -prootpassword -P13306 -h0.0.0.0 
+mysql -uroot -ppass -P13306 -h0.0.0.0
 ```
 
 ## 参考
