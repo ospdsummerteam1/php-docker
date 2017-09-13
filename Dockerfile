@@ -25,6 +25,5 @@ RUN cd /etc/apache2/mods-enabled \
 RUN cd /usr/bin && curl -s http://getcomposer.org/installer | php && ln -s /usr/bin/composer.phar /usr/bin/composer
 RUN apt-get install -y git && composer global require "laravel/installer=~1.1"
 
-
 WORKDIR /var/www/html
 

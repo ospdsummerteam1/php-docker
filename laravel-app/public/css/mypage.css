@@ -1,0 +1,26 @@
+body {
+    padding-top: 100px;
+}
+h3{
+    font-size: 16px;
+}
+h4{
+    font-size: 12px;
+}
+
+.btn-conbutton,
+.btn-conbutton:hover {
+    background-color: #2e6da4;
+    color: #fff;
+    border-radius: 0px;
+    font-size: 15px;
+}
+
+.btn-conbutton:active{
+    background-color: #ccc;
+}
+
+.input-group {
+    margin: 5px auto;
+    width: 80px;
+}
