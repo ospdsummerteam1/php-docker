@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Page Description">
-    <title>Page Title</title>
+    <title>楽天コレクター</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -51,6 +51,7 @@
                 <h1>楽天コレクター</h1>
                 <div class="container">
                     <div class="row">
+                        <form class="form-inline" action="<?=url('/search')?>"></form>
                         <div class="input-group">
                             <input type="text" class="form-control">
                             <span class="input-group-btn">
@@ -66,6 +67,22 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="media">
+                    <h1>最新投稿一覧</h1>
+                    <div>
+                        {{--{{$post}}--}}
+                        @foreach($posts as $post){
+                        <h2>{{ $post->title }}</h2>
+                        <p>{{ $post->detail }}</p>
+                        <a href="{{ $post->img }}">続きを読む</a>
+                        }
+                        @endforeach
+                        {{--@foreach($posts as $post)--}}
+                            {{--<h2>{{ $post->title }}</h2>--}}
+                            {{--<p>{{ $post->read_more }}</p>--}}
+                            {{--<a href="{{ $post->id }}">続きを読む</a>--}}
+                        {{--@endforeach--}}
+                    </div>
+
                     <a class="pull-left" href="#">
                         <div class="panel panel-default">
                             <img src="">
