@@ -12,5 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('top.index');
+});
+
+Route::get('/answer', function (){
+   return view('answer.index');
+});
+
+Route::get('/mypage', function (){
+    return view('mypage.index');
+});
+
+Route::get('/login', function (){
+    return view('mypage.login');
+});
+
+Route::get('/register', function (){
+    return view('register.index');
 });
