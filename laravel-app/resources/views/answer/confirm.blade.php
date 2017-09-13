@@ -51,7 +51,7 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container text-center">
             <div class="form-group">
                 <label>Question1</label>
                 <p>{{$allanswers["answer1"]}}</p>
@@ -65,25 +65,16 @@
                 <p>{{$allanswers["answer3"]}}</p>
             </div>
 
-            <div class="container">
-                <div class="btn-toolbar">
-                    <div class="btn-group center-block">
-                        <div>
-                            <form method="post" action="/answer/end">
-                                {{ csrf_field() }}
-                                <button type="submit" class="btn btn-submit btn-default" name="button" value="submit">送信</button>
-                            </form>
-
-                            <form method="post" action="/answer/">
-                                {{ csrf_field() }}
-                                <button type="submit" class="btn btn-edit btn-default" name="button" value="edit">編集</button>
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
+            <div class="form_conf" style="display:inline-flex">
+                <form method="post" action="/answer/end">
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-submit btn-default" name="button" value="submit">送信</button>
+                </form>
+                <form method="post" action="/answer/">
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-edit btn-default" name="button" value="edit">編集</button>
+                </form>
             </div>
-
         </div>
 
         <footer class="footer">

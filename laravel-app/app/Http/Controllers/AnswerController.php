@@ -11,6 +11,11 @@ class AnswerController extends Controller
     //get answer/
     public function index()
     {
+//        $query = Item::query();
+//        $query->insert([
+//
+//        ]);
+
         $questions = array("red", "blue", "green");
         Session::put("questions",$questions);
         return view('answer.index',compact("questions"));
