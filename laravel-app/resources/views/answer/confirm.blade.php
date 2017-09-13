@@ -10,10 +10,10 @@
     <title>Page Title</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- end -->
-    <link href="css/modal.css" rel="stylesheet">
+    <link href="../css/modal.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -69,11 +69,16 @@
                 <div class="btn-toolbar">
                     <div class="btn-group center-block">
                         <div>
-                            <form method="post" action="/answer/confirm">
+                            <form method="post" action="/answer/end">
                                 {{ csrf_field() }}
                                 <button type="submit" class="btn btn-submit btn-default" name="button" value="submit">送信</button>
+                            </form>
+
+                            <form method="post" action="/answer/">
+                                {{ csrf_field() }}
                                 <button type="submit" class="btn btn-edit btn-default" name="button" value="edit">編集</button>
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -93,7 +98,7 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 
 <script>
     $('#myModal').on('show.bs.modal', function (e) {

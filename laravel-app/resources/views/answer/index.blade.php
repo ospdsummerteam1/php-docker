@@ -52,7 +52,7 @@
         </nav>
 
         <div class="container">
-            <form method="post" action="/answer">
+            <form method="post" action="/answer/confirm">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label>Question1</label>
