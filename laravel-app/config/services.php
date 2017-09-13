@@ -35,4 +35,8 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
-];
+		'twitter' => [
+				'client_id ' => ''
+				'clint_seccret' => ''
+				'redirect' => 'http://localhost:8080/auth/twitter/callback',
+],

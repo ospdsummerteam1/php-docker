@@ -29,4 +29,11 @@ Route::get('/login', function (){
 
 Route::get('/register', function (){
     return view('register.index');
+
 });
+
+//Route to Twitter
+Route::get('auth/twitter','Auth\AuthController@redirectToProvider');
+
+Route::get('auth/twitter/callback','Auth\AuthController@hand
+leProviderCallback');
