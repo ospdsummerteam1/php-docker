@@ -16,7 +16,6 @@
 
 
 	<body>
-		<?php var_dump($data2['test1']); ?>
 	<nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -39,10 +38,11 @@
 	</nav>
 
 		<h1>出品登録フォーム</h1>
-		<form action="/register/confirm" method="get">
+		<?php echo($data['test1']); ?>
+		<form action="/register/confirm" method="post">
 			<div class="form-group">
 				<label for="InputTitle">タイトル<br>
-				 <input name='title' class="form-control" id="InputTitle" placeholder="タイトルを入力してください。">
+				 <input name='title' class="form-control" id="InputTitle" placeholder="タイトルを入力してください。" >
 			 </label>
 			</div>
 			<div class="form-group">
@@ -75,7 +75,7 @@
 				</span>
 			</label>
 			<input type="text" class="form-control" readonly=""><br>
-			<textarea class="form-control" id="InputSet0" placeholder="全体画像の説明を入力してください。"></textarea>
+			<input name="image0-detail" class="form-control" id="InputSet0" placeholder="全体画像の説明を入力してください。"></input>
 		</div><br>
 
 		<div class="input-group1">
@@ -85,7 +85,7 @@
 				</span>
 			</label>
 			<input type="text" class="form-control" readonly=""><br>
-			<textarea class="form-control" id="InputSet1" placeholder="セット１の説明を入力してください。"></textarea>
+			<input name="image1-detail" class="form-control" id="InputSet1" placeholder="セット１の説明を入力してください。"></input>
 		</div><br>
 
 		<div class="input-group2">
@@ -95,7 +95,7 @@
 				</span>
 			</label>
 			<input type="text" class="form-control" readonly=""><br>
-			<textarea class="form-control" id="InputSet2" placeholder="セット２の説明を入力してください。"></textarea>
+			<input name="image2-detail" class="form-control" id="InputSet2" placeholder="セット２の説明を入力してください。"></input>
 		</div><br>
 
 		<div class="input-group3">
@@ -105,11 +105,10 @@
 				</span>
 			</label>
 			<input type="text" class="form-control" readonly=""><br>
-			<textarea class="form-control" id="InputSet1" placeholder="セット３の説明を入力してください。"></textarea>
+			<input name="image3-detail" class="form-control" id="InputSet1" placeholder="セット３の説明を入力してください。"></input>
 		</div><br>
 
 		<input class="btn btn-default" type="submit" value="確認"><br>
-	</div>
 </form>
 
 
