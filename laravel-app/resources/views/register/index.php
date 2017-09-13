@@ -16,6 +16,7 @@
 
 
 	<body>
+		<?php var_dump($data2['test1']); ?>
 	<nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -38,33 +39,33 @@
 	</nav>
 
 		<h1>出品登録フォーム</h1>
-		<form>
+		<form action="/register/confirm" method="get">
 			<div class="form-group">
 				<label for="InputTitle">タイトル<br>
-				 <input type="" class="form-control" id="InputTitle" placeholder="タイトルを入力してください。">
+				 <input name='title' class="form-control" id="InputTitle" placeholder="タイトルを入力してください。">
 			 </label>
 			</div>
 			<div class="form-group">
 		    <label for="InputItemDetail">商品説明<br>
-		    <textarea class="form-control" id="InputItemDetail" placeholder="商品説明を入力してください。"></textarea><br>
+		    <input name='detail' class="form-control" id="InputItemDetail" placeholder="商品説明を入力してください。"></input><br>
 				</label>
 	    </div>
 			<div class="form-group">
 		    <label for="InputQuestion1">質問項目１</label><br>
-		    <textarea class="form-control" id="InputItemQuestion1" placeholder="質問項目１を入力してください。"></textarea><br>
+		    <input name='question1' class="form-control" id="InputItemQuestion1" placeholder="質問項目１を入力してください。"></input><br>
 				</label>
 			</div>
 			<div class="form-group">
 		    <label for="InputQuestion2">質問項目２</label><br>
-		    <textarea class="form-control" id="InputItemQuestion2" placeholder="質問項目２を入力してください。"></textarea><br>
+		    <input name='question2' class="form-control" id="InputItemQuestion2" placeholder="質問項目２を入力してください。"></input><br>
         </label>
 			</div>
 			<div class="form-group">
 		    <label for="InputQuestion3">質問項目３</label><br>
-		    <textarea class="form-control" id="InputItemQuestion3" placeholder="質問項目３を入力してください。"></textarea><br>
+		    <input name='question3' class="form-control" id="InputItemQuestion3" placeholder="質問項目３を入力してください。"></input><br>
         </label>
 			</div>
-		</form><br>
+		<br>
 
 		<div class="imagePreview"></div>
 		<div class="input-group0">
@@ -109,5 +110,8 @@
 
 		<input class="btn btn-default" type="submit" value="確認"><br>
 	</div>
+</form>
+
+
 </body>
 </html>
