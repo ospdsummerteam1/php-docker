@@ -51,33 +51,29 @@
             </div>
         </nav>
 
-        <div class="container text-center">
-            <div class="form-group">
-                <label>Question1</label>
-                <h4>{{$questions[0]}}</h4>
-                <p>{{$answers["answer0"]}}</p>
-            </div>
-            <div class="form-group">
-                <label>Question2</label>
-                <h4>{{$questions[1]}}</h4>
-                <p>{{$answers["answer1"]}}</p>
-            </div>
-            <div class="form-group">
-                <label>Question3</label>
-                <h4>{{$questions[2]}}</h4>
-                <p>{{$answers["answer2"]}}</p>
-            </div>
+        <div class="container">
+            <form method="post" action="/answer/confirm">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <label>Question1</label>
+                    <h4>{{$questions[0]}}</h4>
+                    <input type="text" name="answer0" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Question2</label>
+                    <h4>{{$questions[1]}}</h4>
+                    <input type="text" name="answer1" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Question3</label>
+                    <h4>{{$questions[2]}}</h4>
+                    <input type="text" name="answer2" class="form-control">
+                </div>
 
-            <div class="form_conf" style="display:inline-flex">
-                <form method="post" action="/answer/end">
-                    {{ csrf_field() }}
-                    <button type="submit" class="btn btn-submit btn-default" name="button" value="submit">送信</button>
-                </form>
-                <form method="post" action="/answer/">
-                    {{ csrf_field() }}
-                    <button type="submit" class="btn btn-edit btn-default" name="button" value="edit">編集</button>
-                </form>
-            </div>
+                <div class="input-group">
+                    <button class="btn btn-lg btn-block btn-conbutton" type="submit" value='send'>確認</button>
+                </div>
+            </form>
         </div>
 
         <footer class="footer">

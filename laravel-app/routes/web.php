@@ -35,6 +35,8 @@ Route::get('register/end', 'RegisterController@end');
 
 /*answer*/
 Route::get('answer', 'AnswerController@index');
+
 Route::post('answer/confirm', 'AnswerController@post_confirm');
+Route::get('answer/{answer}', 'AnswerController@show');
 
 Route::post('answer/end', 'AnswerController@post_end');
