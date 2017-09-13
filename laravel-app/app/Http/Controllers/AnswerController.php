@@ -12,14 +12,7 @@ class AnswerController extends Controller
 {
     //商品番号を受取質問の回答ページを表示
     //get answer/
-    public function index()
-    {
-//        $questions = array("red", "blue", "green");
-//        Session::put("questions",$questions);
-//        return view('answer.index',compact("questions"));
-    }
-
-    public function show($id)
+    public function index($id)
     {
         $qu = Question::query()->where('item_id', $id)->get();
 
