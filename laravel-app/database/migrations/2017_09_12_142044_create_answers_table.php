@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAnswerTable extends Migration
+class CreateAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateAnswerTable extends Migration
      */
     public function up()
     {
-        Schema::table('answer', function (Blueprint $table) {
-            $sql = 'CREATE TABLE `answer` (
-                      `answer_id` int(11) DEFAULT NULL,
-                      `application_id` int(11) DEFAULT NULL,
-                      `question_id` int(11) DEFAULT NULL,
-                      `answer` text
+        Schema::table('answers', function (Blueprint $table) {
+            $sql = 'CREATE TABLE `answers` (
+                   `answer_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+                    `application_id` int(11) DEFAULT NULL,
+                    `question_id` int(11) DEFAULT NULL,
+                    `answer` text CHARACTER SET utf8,
+                    PRIMARY KEY (`answer_id`)
                     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;';
             DB::connection()->getPdo()->exec($sql);
         });
@@ -31,6 +32,6 @@ class CreateAnswerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answer');
+        Schema::dropIfExists('answers');
     }
 }

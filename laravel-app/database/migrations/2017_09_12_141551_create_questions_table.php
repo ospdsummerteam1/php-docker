@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateApplicationTable extends Migration
+class CreateQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateApplicationTable extends Migration
      */
     public function up()
     {
-        Schema::table('application', function (Blueprint $table) {
-            $sql = 'CREATE TABLE `application` (
-                  `application_id` int(11) DEFAULT NULL,
-                  `user_id` text,
-                  `item_id` int(11) DEFAULT NULL,
-                  `status` tinyint(1) DEFAULT NULL
+        Schema::table('questions', function (Blueprint $table) {
+            $sql = 'CREATE TABLE `questions` (
+                   `question_id` int(11) NOT NULL AUTO_INCREMENT,
+                   `item_id` int(11) DEFAULT NULL,
+                   `question` text CHARACTER SET utf8,
+                    PRIMARY KEY (`question_id`)
                   ) ENGINE=InnoDB DEFAULT CHARSET=latin1;';
             DB::connection()->getPdo()->exec($sql);
         });
@@ -31,6 +31,6 @@ class CreateApplicationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('application');
+        Schema::dropIfExists('questions');
     }
 }

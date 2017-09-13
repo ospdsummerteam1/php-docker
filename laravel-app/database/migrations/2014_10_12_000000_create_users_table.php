@@ -15,12 +15,11 @@ class CreateUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $sql = 'CREATE TABLE `users` (
-            `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-            `icon` text,
-            `user_name` char(50) DEFAULT NULL,
-            `introduction` text,
-            PRIMARY KEY (`user_id`)
-            ) ENGINE=InnoDB DEFAULT CHARSET=latin1;';
+                    `icon` text CHARACTER SET utf8,
+                    `user_name` char(50) CHARACTER SET utf8 NOT NULL DEFAULT \'\',
+                    `introduction` text CHARACTER SET utf8,
+                    `user_id` text CHARACTER SET utf8 NOT NULL
+                    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;';
             DB::connection()->getPdo()->exec($sql);
         });
     }
