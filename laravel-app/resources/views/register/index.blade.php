@@ -14,7 +14,6 @@
 		<![endif]-->
 	</head>
 
-
 	<body>
 	<nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
@@ -38,8 +37,8 @@
 	</nav>
 
 		<h1>出品登録フォーム</h1>
-		<?php echo($data['test1']); ?>
-		<form action="/register/confirm" method="post">
+		<form action="/register" method="post">
+			<?php echo csrf_field(); ?>
 			<div class="form-group">
 				<label for="InputTitle">タイトル<br>
 				 <input name='title' class="form-control" id="InputTitle" placeholder="タイトルを入力してください。" >
@@ -75,7 +74,6 @@
 				</span>
 			</label>
 			<input type="text" class="form-control" readonly=""><br>
-			<input name="image0-detail" class="form-control" id="InputSet0" placeholder="全体画像の説明を入力してください。"></input>
 		</div><br>
 
 		<div class="input-group1">
@@ -111,6 +109,16 @@
 		<input class="btn btn-default" type="submit" value="確認"><br>
 </form>
 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).on('change', ':file', function() {
+    var input = $(this),
+    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.parent().parent().next(':text').val(label);
+	});
+</script>
 
 </body>
 </html>
