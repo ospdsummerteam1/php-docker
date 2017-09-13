@@ -11,22 +11,31 @@
 |
 */
 
-Route::get('/', function () {
-    return view('top.index');
-});
+/*top*/
+Route::resource('/', 'TopController');
+Route::get('/search', 'TopController@search');
+Route::get('/detail', 'TopController@detail');
 
-Route::get('/answer', function (){
-   return view('answer.index');
-});
+//Route::resource('');
+//Route::post('/detail', 'TopController@create_post');
 
-Route::get('/mypage', function (){
-    return view('mypage.index');
-});
+//Route::resource('login/', 'MypageController@login');
+/*mypage*/
+Route::get('login/', 'MypageController@login');
+Route::post('login/', 'MypageController@login_post');
 
-Route::get('/login', function (){
-    return view('mypage.login');
-});
+Route::get('mypage/', 'MypageController@index');
+Route::get('mypage/show_answer', 'MypageController@show_answer');
+Route::post('mypage/', 'MypageController@mypage_post');
 
-Route::get('/register', function (){
-    return view('register.index');
-});
+/*register*/
+Route::get('register/', 'RegisterController@index');
+//Route::post('register/', 'RegisterController@index');
+
+Route::get('register/confirm', 'RegisterController@confirm');
+Route::get('register/end', 'RegisterController@end');
+
+/*answer*/
+Route::get('answer', 'AnswerController@index');
+Route::get('answer/confirm', 'AnswerController@confirm');
+Route::get('answer/end', 'AnswerController@end');
