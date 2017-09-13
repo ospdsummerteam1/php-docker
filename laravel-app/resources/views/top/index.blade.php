@@ -30,17 +30,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">楽天コレクター</a>
+                    <a class="navbar-brand" href="{{url('/')}}">楽天コレクター</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                    </ul>
 
                     <!--                    これは、ログイン後のメニュー-->
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="<?= isset($login) ? '{user_name}' : 'ログイン' ?>"><?= isset($login) ? '{user_name}' : 'ログイン' ?></a>
+                            <a href="<?= isset($login) ? url("/mypage"): url("/login") ?>"><?= isset($login) ? '{user_name}' : 'ログイン' ?></a>
                         </li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -51,15 +48,14 @@
                 <h1>楽天コレクター</h1>
                 <div class="container">
                     <div class="row">
-                        <form class="form-inline" action="<?=url('/search')?>"></form>
+                        <form method="get" action="{{url('/search')}}">
                         <div class="input-group">
-                            <input type="text" class="form-control">
+                            <input type="text" name="keyword" class="form-control">
                             <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
-                            <i class='glyphicon glyphicon-search'></i>
-                        </button>
-                    </span>
+                            <input class="btn btn-default" type="submit" value="検索">
+                            </span>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -70,61 +66,51 @@
                     <h1>最新投稿一覧</h1>
                     <div>
                         {{--{{$post}}--}}
-                        @foreach($posts as $post){
-                        <h2>{{ $post->title }}</h2>
-                        <p>{{ $post->detail }}</p>
-                        <a href="{{ $post->img }}">続きを読む</a>
-                        }
-                        @endforeach
-                        {{--@foreach($posts as $post)--}}
-                            {{--<h2>{{ $post->title }}</h2>--}}
-                            {{--<p>{{ $post->read_more }}</p>--}}
-                            {{--<a href="{{ $post->id }}">続きを読む</a>--}}
-                        {{--@endforeach--}}
-                    </div>
-
-                    <a class="pull-left" href="#">
-                        <div class="panel panel-default">
-                            <img src="">
-
-                            <p>aaaaaaaaaa</p>
-                        </div>
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">見出し</h4>
-                    </div>
-                </div>
-
-                <ul class="media-list">
-                    <li class="media">
-                        <a class="pull-left" href="#">
+                        @foreach($posts as $post)
+                        <a class="pull-left" href="{{$post->item_id}}">
                             <div class="panel panel-default">
-                                <img src="">
+                                <img src="{{ $post->img }}">
 
-                                <p>aaaaaaaaaa</p>
                             </div>
-
                         </a>
                         <div class="media-body">
-                            <h4 class="media-heading">見出し</h4>
+                            <h2>{{ $post->title }}</h2>
+                            <p>{{ $post->detail }}</p>
                         </div>
-                    </li>
-                </ul>
+                        @endforeach
+
+                    </div>
+
+                    <ul class="media-list">
+                        <li class="media">
+                            <a class="pull-left" href="#">
+                                <div class="panel panel-default">
+                                    <img src="">
+
+                                    <p>aaaaaaaaaa</p>
+                                </div>
+
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">見出し</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="pull-right hidden-xs">Version1.0</div>
+                    <strong>Copyright &copy; 2015</strong>, All rights reserved.
+                </div>
+            </footer>
         </div>
-
-        <footer class="footer">
-            <div class="container">
-                <div class="pull-right hidden-xs">Version1.0</div>
-                <strong>Copyright &copy; 2015</strong>, All rights reserved.
-            </div>
-        </footer>
     </div>
-</div>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

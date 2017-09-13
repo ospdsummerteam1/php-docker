@@ -18,10 +18,10 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body >
+<body>
 <div class="container">
     <div class="row">
-        <nav class="navbar navbar-default navbar-fixed-top" >
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -30,17 +30,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">楽天コレクター</a>
+                    <a class="navbar-brand" href="{{url('/')}}">楽天コレクター</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                    </ul>
 
                     <!--                    これは、ログイン後のメニュー-->
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="<?= isset($login) ? '{user_name}' : 'ログイン' ?>"><?= isset($login) ? '{user_name}' : 'ログイン' ?></a>
+                            <a href="<?= isset($login) ? url("/mypage") : url("/login") ?>"><?= isset($login) ? '{user_name}' : 'ログイン' ?></a>
                         </li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -51,48 +48,41 @@
                 <h3>検索結果</h3>
                 <div class="container">
                     <div class="row">
-                        <div class="input-group">
-                            <input type="text" class="form-control">
-                            <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
-                            <i class='glyphicon glyphicon-search'></i>
-                        </button>
-                    </span>
-                        </div>
+                        <form action="{{url('/search')}}" method="post">
+                            <div class="input-group">
+                                <input type="text" name="keyword" class="form-control"
+                                       value="{{(isset($keyword))?$keyword:null}}">
+                                <span class="input-group-btn">
+                                <input class="btn btn-default" type="submit" value="検索">
+                                </span>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
         <div class="panel panel-default">
-            <div class="panel-body">
+            <div class="panel-body pagenate">
                 <div class="media">
-                    <a class="pull-left" href="#">
-                        <div class="panel panel-default">
-                            <img src="">
+                    <div>
+                        {{--{{$post}}--}}
+                        @foreach($data as $post)
+                            <a class="pull-left" href="{{$post->item_id}}">
+                                <div class="panel panel-default">
+                                    <img src="{{ $post->img }}">
 
-                            <p>aaaaaaaaaa</p>
-                        </div>
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">見出し</h4>
+                                </div>
+                            </a>
+                            <div class="media-body">
+                                <h2>{{ $post->title }}</h2>
+                                <p>{{ $post->detail }}</p>
+                            </div>
+                        @endforeach
+
+                    </div>
+                    <div class="paginate">
                     </div>
                 </div>
-
-                <ul class="media-list">
-                    <li class="media">
-                        <a class="pull-left" href="#">
-                            <div class="panel panel-default">
-                                <img src="">
-
-                                <p>aaaaaaaaaa</p>
-                            </div>
-
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">見出し</h4>
-                        </div>
-                    </li>
-                </ul>
             </div>
         </div>
 
