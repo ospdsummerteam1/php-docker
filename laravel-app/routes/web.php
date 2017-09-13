@@ -16,10 +16,6 @@ Route::resource('/', 'TopController');
 Route::get('/search', 'TopController@search');
 Route::get('/detail', 'TopController@detail');
 
-//Route::resource('');
-//Route::post('/detail', 'TopController@create_post');
-
-//Route::resource('login/', 'MypageController@login');
 /*mypage*/
 Route::get('login/', 'MypageController@login');
 Route::post('login/', 'MypageController@login_post');
@@ -30,12 +26,18 @@ Route::post('mypage/', 'MypageController@mypage_post');
 
 /*register*/
 Route::get('register/', 'RegisterController@index');
-//Route::post('register/', 'RegisterController@index');
+Route::post('register/', 'RegisterController@post_form');
 
 Route::get('register/confirm', 'RegisterController@confirm');
+Route::post('register/confirm', 'RegisterController@post_confirm');
+
 Route::get('register/end', 'RegisterController@end');
 
 /*answer*/
 Route::get('answer', 'AnswerController@index');
+Route::post('answer', 'AnswerController@post_quest');
+
 Route::get('answer/confirm', 'AnswerController@confirm');
+Route::post('answer/confirm', 'AnswerController@post_confirm');
+
 Route::get('answer/end', 'AnswerController@end');
