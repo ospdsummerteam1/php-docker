@@ -7,22 +7,27 @@ use Illuminate\Http\Request;
 class AnswerController extends Controller
 {
     //商品番号を受取質問の回答ページを表示
-    public function index($id)
+    public function index()
     {
-        //viewに商品に対する質問渡す
-        return view('answer.confirm')->with([
-            "Q_1" => "aaaaaaaaaaa",
-            "Q_2" => "bbbbbbbbbbb",
-            "Q_3" => "ccccccccccc",
-        ]);
+        $questions = array("red", "blue", "green");
+        return view('answer.index',compact("questions"));
+    }
+
+    //post answer/
+    public function post_quest(Request $request){
+        $allanswers = $request->all();
+        return view('answer.confirm',compact("allanswers"));
     }
 
     //
-    public function confirm(){
+    public function post_confirm(Request $request){
+        $value = $request->all();
 
-    }
 
-    public function end(){
-
+        if($value == "edit"){
+            return view('answer.confirm',compact("allanswers"));
+        }else{
+            return view('answer.confirm',compact("allanswers"));
+        }
     }
 }

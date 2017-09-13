@@ -52,24 +52,33 @@
         </nav>
 
         <div class="container">
-            <form>
-                <div class="form-group">
-                    <label>Question1</label>
-                    <input type="text" name="email" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Question2</label>
-                    <input type="text" name="password" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Question3</label>
-                    <input type="text" name="password" class="form-control">
-                </div>
-            </form>
-
-            <div class="input-group">
-                <button class="btn btn-lg btn-block btn-conbutton" type="submit">確認</button>
+            <div class="form-group">
+                <label>Question1</label>
+                <p>{{$allanswers["answer1"]}}</p>
             </div>
+            <div class="form-group">
+                <label>Question2</label>
+                <p>{{$allanswers["answer2"]}}</p>
+            </div>
+            <div class="form-group">
+                <label>Question3</label>
+                <p>{{$allanswers["answer3"]}}</p>
+            </div>
+
+            <div class="container">
+                <div class="btn-toolbar">
+                    <div class="btn-group center-block">
+                        <div>
+                            <form method="post" action="/answer/confirm">
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-submit btn-default" name="button" value="submit">送信</button>
+                                <button type="submit" class="btn btn-edit btn-default" name="button" value="edit">編集</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <footer class="footer">
@@ -84,7 +93,7 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 <script>
     $('#myModal').on('show.bs.modal', function (e) {

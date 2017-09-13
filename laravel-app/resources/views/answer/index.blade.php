@@ -52,32 +52,28 @@
         </nav>
 
         <div class="container">
-            <form>
+            <form method="post" action="/answer">
+                {{ csrf_field() }}
                 <div class="form-group">
                     <label>Question1</label>
-                    <p>answer1 answer1 answer1 answer1 answer1</p>
+                    <h4>{{$questions[0]}}</h4>
+                    <input type="text" name="answer1" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Question2</label>
-                    <p>answer2 answer2 answer2 answer2 answer2</p>
+                    <h4>{{$questions[1]}}</h4>
+                    <input type="text" name="answer2" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Question3</label>
-                    <p>answer3 answer3 answer3 answer3 answer3</p>
+                    <h4>{{$questions[2]}}</h4>
+                    <input type="text" name="answer3" class="form-control">
+                </div>
+
+                <div class="input-group">
+                    <button class="btn btn-lg btn-block btn-conbutton" type="submit" value='send'>確認</button>
                 </div>
             </form>
-
-            <div class="container">
-                <div class="btn-toolbar">
-                    <div class="btn-group center-block">
-                        <div>
-                            <button type="submit" class="btn btn-submit btn-default">送信</button>
-                            <button type="submit" class="btn btn-edit btn-default">編集</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
         <footer class="footer">
@@ -92,7 +88,7 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 <script>
     $('#myModal').on('show.bs.modal', function (e) {
