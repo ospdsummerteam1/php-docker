@@ -17,11 +17,10 @@ class TwitterController extends Controller
 	}
 
 	/*Twitterからユーザー情報を取得する*/
-	public function handleProviderCallback()
+	public function handleProviderCallback(Request $request)
 	{
-		try{		
-				$user = Socailite::driver('twitter')->user();
-		
+		try{
+            $user = Socialite::driver('twitter')->user();
 		}catch (Exception $e){
 			return redirect('auth/twitter');
 		}
@@ -33,8 +32,7 @@ class TwitterController extends Controller
 		$request->session()->put('profile_choice','twitter_profile');
 
 		return redirect()
-							->route('')
-							->withInput($request->except(['action','confirming']));
+                    ->route('/mypage');
 	}
 
 }
