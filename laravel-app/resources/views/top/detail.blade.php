@@ -44,6 +44,14 @@
                 </div>
                 <br>
             @endforeach
+
+            <div class="input-group">
+					<span class="input-group-addon">
+						<i class="fa fa-fw fa-2x fa-twitter fa-fw"></i>
+					</span>
+                <a class="btn btn-lg btn-block btn-twitter" href="/answer/{{$data['item']['item_id']}}">解答する</a>
+            </div>
+
         </div>
     </div>
 @stop
