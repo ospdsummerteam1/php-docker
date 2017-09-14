@@ -14,7 +14,7 @@
 /*top*/
 Route::resource('/', 'TopController');
 Route::get('/search', 'TopController@search');
-Route::get('/detail', 'TopController@detail');
+Route::get('/detail-{id}', 'TopController@detail');
 
 /*mypage*/
 Route::get('login/', 'MypageController@login');

@@ -21,7 +21,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -69,7 +69,7 @@
                         @foreach($posts as $post)
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <a class="pull-left" href="{{$post->item_id}}">
+                                    <a class="pull-left" href="{{url("/detail-").$post['item_id']}}">
                                         <div class="panel panel-default">
                                             <img src="{{ $post->img }}">
                                         </div>

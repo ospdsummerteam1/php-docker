@@ -21,7 +21,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default ">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -48,7 +48,7 @@
                 <h3>検索結果</h3>
                 <div class="container">
                     <div class="row">
-                        <form action="{{url('/search')}}" method="post">
+                        <form action="{{url('/search')}}" method="get">
                             <div class="input-group">
                                 <input type="text" name="keyword" class="form-control"
                                        value="{{(isset($keyword))?$keyword:null}}">
@@ -66,23 +66,26 @@
                 <div class="media">
                     <div>
                         {{--{{$post}}--}}
-                        @foreach($data as $post)
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <a class="pull-left" href="{{$post->item_id}}">
-                                        <div class="panel panel-default">
-                                            <img src="{{ $post->img }}">
+                        @if(count($data)>=1)
+                            @foreach($data as $post)
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <a class="pull-left" href="{{url("/detail/").$post['item_id']}}">
+                                            <div class="panel panel-default">
+                                                <img src="{{ $post['img'] }}">
 
+                                            </div>
+                                        </a>
+                                        <div class="media-body">
+                                            <h2>{{ $post["title"]}}</h2>
+                                            <p>{{ $post['detail'] }}</p>
                                         </div>
-                                    </a>
-                                    <div class="media-body">
-                                        <h2>{{ $post->title }}</h2>
-                                        <p>{{ $post->detail }}</p>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
-
+                            @endforeach
+                        @else
+                            <h4><?=$keyword . 'が該当する出品はありません'?></h4>
+                        @endif
                     </div>
                     <div class="paginate">
                     </div>

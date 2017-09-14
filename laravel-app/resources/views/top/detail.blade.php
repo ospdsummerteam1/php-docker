@@ -21,7 +21,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -49,111 +49,41 @@
             <img src="http://t2-workshop.com/wp-content/uploads/2017/05/fb66fcca77b69868214830faf050823f.jpg"
                  align="left" class="img-rounded" hspace="3" width="320" height="240">
             <label for="OutputTitle">
-                <?php
-                if (isset($_POST['title'])) {
-                    $comment = $_POST['title'];
-                    echo $comment;
-                }
-                ?>
+                <?=(isset($data['item']['title'])) ? $data['item']['title'] : null?>
                 <br>
-            <?php
-            if (isset($_POST['detail'])) {
-                $comment = $_POST['detail'];
-                echo $comment;
-            }
-            ?>
+                <?=(isset($data['item']['detail'])) ? $data['item']['detail'] : null?>
+            </label>
         </div>
         <br clear="left">
 
         <div class="sub_image">
             <table class="table" border="0">
                 <tr class="tr">
-                    <td class="td1">
-                        <img src="https://i.ytimg.com/vi/xUKrZSNB44o/maxresdefault.jpg" class="img-rounded" hspace="3"
-                             width="240" height="160">
-                        <p class="set1">
-                            <label for="OutputSet1">セット１<br>
-                                <?php
-                                if (isset($_POST['image1-detail'])) {
-                                    $comment = $_POST['image1-detail'];
-                                    echo $comment;
-                                }
-                                ?>
+                    @foreach($data['send_item'] as $send)
+                        <td>
+                            <img src="{{$send['img']}}" class="img-rounded" hspace="3"
+                                 width="240" height="160">
+                            <p class="set1">
+                                <label for="OutputSet1">セット<br>
+                            <p>{{$send['detail']}}</p>
+
                             </label>
-                    </td>
-                    <td class="td2">
-                        <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/n/niwaka-6-nki/20161014/20161014205307.jpg"
-                             class="img-rounded" hspace="3" width="240" height="160">
-                        <p class="set2">
-                            <label for="OutputSet2">セット２<br>
-                                <?php
-                                if (isset($_POST['image2-detail'])) {
-                                    $comment = $_POST['image2-detail'];
-                                    echo $comment;
-                                }
-                                ?>
-                            </label>
-                    </td>
-                    <td class="td3">
-                        <img src="http://blogimg.goo.ne.jp/user_image/28/14/b409dad95cdbde8688afdf924db07948.jpg"
-                             class="img-rounded" hspace="3" width="240" height="160">
-                        <p class="set3">
-                            <label for="OutputSet2">セット３<br>
-                                <?php
-                                if (isset($_POST['image3-detail'])) {
-                                    $comment = $_POST['image3-detail'];
-                                    echo $comment;
-                                }
-                                ?>
-                            </label>
-                        </p>
-                    </td>
+                        </td>
+                    @endforeach
                 </tr>
             </table>
         </div>
 
-        <div class="quesion1">
-            <label for="question1">質問１<br>
-                <label for="Outputquestion1">
-                    <?php
-                    if (isset($_POST['question1'])) {
-                        $comment = $_POST['question1'];
-                        echo $comment;
-                    }
-                    ?><br>
+        @foreach($data['ques'] as $ques)
+            <div class="quesion">
+                <label for="question">質問<br>
+                    <label for="Outputquestion1">
+                        <h4>{{$ques['question']}}</h4><br>
+                    </label>
                 </label>
-            </label>
-        </div>
-        <br>
-
-        <div class="quesion2">
-            <label for="question2">質問２<br>
-                <label for="Outputquestion2">
-                    <?php
-                    if (isset($_POST['question2'])) {
-                        $comment = $_POST['question2'];
-                        echo $comment;
-                    }
-                    ?><br>
-                </label>
-            </label>
-        </div>
-        <br>
-
-        <div class="quesion3">
-            <label for="question3">質問３<br>
-                <label for="Outputquestion3">
-                    <?php
-                    if (isset($_POST['question3'])) {
-                        $comment = $_POST['question3'];
-                        echo $comment;
-                    }
-                    ?><br>
-                </label>
-            </label>
-        </div>
-        <br>
-
+            </div>
+            <br>
+        @endforeach
 
         <footer class="footer">
             <div class="container">
