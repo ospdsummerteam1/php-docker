@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,19 +42,13 @@
     <div class="main_image">
       <img src="http://t2-workshop.com/wp-content/uploads/2017/05/fb66fcca77b69868214830faf050823f.jpg" align="left" class="img-rounded" hspace="3" width="320" height="240">
 				 <label for="OutputTitle">
-					 <?php
-					 if(isset($_POST['title'])){
-						 $comment = $_POST['title'];
-						 echo $comment;
-					 }
-					 ?>
+					 <p>
+					 {{$allanswers["title"]}}
+				 </p>
 					 <br>
-				 <?php
-				 if(isset($_POST['detail'])){
-					 $comment = $_POST['detail'];
-					 echo $comment;
-				 }
-				 ?>
+					 <p>
+					 {{$allanswers["detail"]}}
+				 </p>
 		 </div><br clear="left">
 
     <div class="sub_image">
@@ -64,34 +58,28 @@
           <img src="https://i.ytimg.com/vi/xUKrZSNB44o/maxresdefault.jpg" class="img-rounded" hspace="3" width="240" height="160">
           <p class="set1">
             <label for="OutputSet1">セット１<br>
-							<?php
-		 				 if(isset($_POST['image1-detail'])){
-		 					 $comment = $_POST['image1-detail'];
-		 					 echo $comment;
-		 				 }
-		 				 ?>
+							<p>
+	 					 {{$allanswers["image1-detail"]}}
+
+	 				 </p>
         </td>
         <td class="td2">
           <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/n/niwaka-6-nki/20161014/20161014205307.jpg" class="img-rounded" hspace="3" width="240" height="160">
           <p class="set2">
             <label for="OutputSet2">セット２<br>
-							<?php
-						 if(isset($_POST['image2-detail'])){
-							 $comment = $_POST['image2-detail'];
-							 echo $comment;
-						 }
-						 ?>
+							<p>
+	 					 {{$allanswers["image2-detail"]}}
+
+	 				 </p>
         </td>
         <td class="td3">
           <img src="http://blogimg.goo.ne.jp/user_image/28/14/b409dad95cdbde8688afdf924db07948.jpg" class="img-rounded" hspace="3" width="240" height="160">
           <p class="set3">
             <label for="OutputSet2">セット３<br>
-							<?php
-						 if(isset($_POST['image3-detail'])){
-							 $comment = $_POST['image3-detail'];
-							 echo $comment;
-						 }
-						 ?>
+							<p>
+	 					 {{$allanswers["image3-detail"]}}
+
+	 				 </p>
         </td>
       </tr>
     </table>
@@ -100,40 +88,45 @@
     <div class="quesion1">
       <label for="question1">質問１<br>
       <label for="Outputquestion1">
-				<?php
-			 if(isset($_POST['question1'])){
-				 $comment = $_POST['question1'];
-				 echo $comment;
-			 }
-			 ?><br>
+				<p>
+				{{$allanswers["question1"]}}
+
+			</p><br>
     </div><br>
 
     <div class="quesion2">
 			<label for="question2">質問２<br>
       <label for="Outputquestion2">
-				<?php
-			 if(isset($_POST['question2'])){
-				 $comment = $_POST['question2'];
-				 echo $comment;
-			 }
-			 ?><br>
+				<p>
+					{{$allanswers["question2"]}}
+
+			</p><br>
     </div><br>
 
     <div class="quesion3">
 			<label for="question3">質問３<br>
       <label for="Outputquestion3">
-				<?php
-			 if(isset($_POST['question3'])){
-				 $comment = $_POST['question3'];
-				 echo $comment;
-			 }
-			 ?><br>
+				<p>
+				{{$allanswers["question3"]}}
+
+			</p><br>
     </div><br>
 
+		<div class="form_conf" style="display:inline-flex">
+                <form method="post" action="/register/end">
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-submit btn-default" name="button" value="submit">登録</button>
+                </form>
+                <form method="post" action="/resister/">
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-edit btn-default" name="button" value="edit">編集</button>
+                </form>
+           </div>
 
-		<a href="/register/end" class="btn btn-default ">登録</a>
+
+		<!--<a href="/register/end" class="btn btn-default ">登録</a>
 		<br><br>
-		<a href="/register/index" class="btn btn-default ">戻る</a>
+		<a href="/register/index" class="btn btn-default ">戻る</a>-->
 
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
