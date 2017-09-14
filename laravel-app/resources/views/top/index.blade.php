@@ -33,6 +33,9 @@
                     <a class="navbar-brand" href="{{url('/')}}">楽天コレクター</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                    </ul>
 
                     <!--                    これは、ログイン後のメニュー-->
                     <ul class="nav navbar-nav navbar-right">
@@ -102,6 +105,7 @@
                 </div>
             </div>
         </div>
+
         <footer class="footer">
             <div class="container">
                 <div class="pull-right hidden-xs">Version1.0</div>

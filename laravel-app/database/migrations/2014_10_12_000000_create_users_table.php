@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
                     `user_name` char(50) CHARACTER SET utf8 NOT NULL DEFAULT \'\',
                     `introduction` text CHARACTER SET utf8,
                     `user_id` text CHARACTER SET utf8 NOT NULL
-                    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;';
+                    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;';
             DB::connection()->getPdo()->exec($sql);
         });
     }

@@ -60,7 +60,7 @@
         </div>
 
         <div class="input-group">
-            <a class="btn btn-lg btn-block btn-conbutton" href="#">確認</a>
+            <a class="btn btn-lg btn-block btn-conbutton" href="/mypage">確認!!</a>
         </div>
 
 
