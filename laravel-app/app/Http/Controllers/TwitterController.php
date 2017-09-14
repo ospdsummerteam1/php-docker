@@ -32,6 +32,7 @@ class TwitterController extends Controller
 		//sessionに導入
 		$request->session()->put('twitter_access_token',$user->token);
 		$request->session()->put('twitter_access_secret',$user->tokenSecret);
+        $request->session()->put('twitter_user_id',$user->id);
 		$request->session()->put('profile_choice','twitter_profile');
 
         $authUser = $this->findOrCreateUser($user);
@@ -56,29 +57,55 @@ class TwitterController extends Controller
         ]);
     }
 
-    /*ユーザーフォロー*/
+    /*ログインユーザーが指定されたuserをフォロー*/
     public function followUser(Request $request){
         //認証情報の取得
         $request_token = [
             'token'  => Session::get('twitter_access_token'),
             'secret' => Session::get('twitter_access_secret'),
         ];
-
-        var_dump(Session::get('twitter_access_token'), Session::get('twitter_access_secret'));
-
+//        var_dump(Session::get('twitter_access_token'), Session::get('twitter_access_secret'));
         Twitter::reconfig($request_token);
 
         try
         {
-            $response = Twitter::getUserTimeline(['count' => 20, 'format' => 'array']);
+            $screen_name = 'luneciela';
+            $user = Twitter::getUsers(['screen_name' => $screen_name]);
+            $response = Twitter::postFollow(['screen_name'=> "$screen_name", 'user_id'=> "$user->id"]);
         }
         catch (Exception $e)
         {
             // dd(Twitter::error());
             dd(Twitter::logs());
         }
-
-        dd($response);
+//        dd("$screen_name");
     }
+
+    /*運営がuserへDMを送る*/
+    public function sendDM(Request $request){
+        //認証情報の取得
+        $request_token = [
+            'token'  => '908399816186642432-mFqfc44l0f6hls03H9jzJmsCH7tPDad',//Session::get('twitter_access_token'),
+            'secret' => 'WxVH3v9Ve3AGfdhpGQLHiJKfE0xq2OnxpDvb1o0LfZ0BX',//Session::get('twitter_access_secret'),
+        ];
+//        var_dump(Session::get('twitter_access_token'), Session::get('twitter_access_secret'));
+        Twitter::reconfig($request_token);
+
+        try
+        {
+            $user_id = Session::get('twitter_user_id');
+            $user = Twitter::getUsers(['user_id' => $user_id]);
+            $response = Twitter::postDM(['screen_name'=> "$user->screen_name", 'user_id'=> "$user->id",
+                'text' => "そろそろ相手に連絡してみませんか"]);
+        }
+        catch (Exception $e)
+        {
+            // dd(Twitter::error());
+            dd(Twitter::logs());
+        }
+//        dd("$user");
+//        var_dump($user);
+    }
+
 
 }
