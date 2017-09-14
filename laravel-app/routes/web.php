@@ -19,7 +19,7 @@ Route::get('/detail', 'TopController@detail');
 /*mypage*/
 Route::get('login/', 'MypageController@login');
 
-Route::get('mypage/', 'MypageController@login');
+Route::get('mypage/', 'MypageController@index');
 Route::get('mypage/{mypage}', 'MypageController@index');
 Route::get('mypage/show_answer', 'MypageController@show_answer');
 
