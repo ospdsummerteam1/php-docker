@@ -18,6 +18,10 @@ class RegisterController extends Controller
   }
   public function post_confirm(Request $request){
     $item = $request->all();
+    $item['main_image'] = $item['main_image']->move('/var/www/html/public/image',$this->makeRandStr(6).".jpg")->getFilename();
+    $item['image1'] = $item['image1']->move("/var/www/html/public/image",$this->makeRandStr(6).'.jpg')->getFilename();
+    $item['image2'] = $item['image2']->move("/var/www/html/public/image",$this->makeRandStr(6).'.jpg')->getFilename();
+    $item['image3'] = $item['image3']->move("/var/www/html/public/image",$this->makeRandStr(6).'.jpg')->getFilename();
     Session::put("item",$item);
     return view('register.confirm', compact("item"));
   }
@@ -25,13 +29,13 @@ class RegisterController extends Controller
       $item = Session::get("item");
       $authuser = Auth::user();
       $id = Item::query()->insertGetId(
-                ['img' => "http://t2-workshop.com/wp-content/uploads/2017/05/fb66fcca77b69868214830faf050823f.jpg", 'title' => $item["title"], 'detail' => $item["detail"], 'user_id' => $authuser->user_id]
+                ['img' => $item['main_image'], 'title' => $item["title"], 'detail' => $item["detail"], 'user_id' => $authuser->user_id]
               );
 
       SendItem::query()->insert([
-                ['img' => "http://t2-workshop.com/wp-content/uploads/2017/05/fb66fcca77b69868214830faf050823f.jpg", 'item_id' => $id, 'detail' => $item["image1-detail"]],
-                ['img' => "http://t2-workshop.com/wp-content/uploads/2017/05/fb66fcca77b69868214830faf050823f.jpg", 'item_id' => $id, 'detail' => $item["image2-detail"]],
-                ['img' => "http://t2-workshop.com/wp-content/uploads/2017/05/fb66fcca77b69868214830faf050823f.jpg", 'item_id' => $id, 'detail' => $item["image3-detail"]]
+                ['img' => $item['image1'], 'item_id' => $id, 'detail' => $item["image1-detail"]],
+                ['img' => $item['image2'], 'item_id' => $id, 'detail' => $item["image2-detail"]],
+                ['img' => $item['image3'], 'item_id' => $id, 'detail' => $item["image3-detail"]]
             ]);
 
       Question::query()->insert([
@@ -44,10 +48,24 @@ class RegisterController extends Controller
   }
 
 
-  /*public function post_form(Request $request){
-      $allanswers = $request->all();
-      var_dump($allanswers);
-      Session::put("allanswers",$allanswers);
-      return view('register.confirm', compact("allanswers"));
-  }*/
+    /**
+     * ランダム文字列生成 (英数字)
+     * $length: 生成する文字数
+     */
+    function makeRandStr($length) {
+        $str = array_merge(range('a', 'z'), range('0', '9'), range('A', 'Z'));
+        $r_str = null;
+        for ($i = 0; $i < $length; $i++) {
+            $r_str .= $str[rand(0, count($str) - 1)];
+        }
+        return $r_str;
+    }
+
+
+    /*public function post_form(Request $request){
+        $allanswers = $request->all();
+        var_dump($allanswers);
+        Session::put("allanswers",$allanswers);
+        return view('register.confirm', compact("allanswers"));
+    }*/
 }

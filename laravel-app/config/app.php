@@ -178,7 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 				
 				/*Twitter_API*/
-	Laravel\Socialite\SocialiteServiceProvider::class,
+	    Laravel\Socialite\SocialiteServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class,
 
     ],

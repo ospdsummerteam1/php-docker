@@ -50,10 +50,6 @@ class TopController extends Controller
         $qus = Question::query();
         $data['ques'] = $qus ->where('item_id',$data['item']['item_id'])->orderBy('question_id')->get()->toArray();
 
-//        echo '<pre>';
-//        var_dump($data);
-//        exit();
-
 
         return view('top/detail',compact('data'));
     }

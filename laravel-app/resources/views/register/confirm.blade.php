@@ -6,7 +6,7 @@
             <h1>出品確認</h1>
             <?php echo csrf_field(); ?>
             <div class="main_image">
-                <img src="http://t2-workshop.com/wp-content/uploads/2017/05/fb66fcca77b69868214830faf050823f.jpg"
+                <img src="{{'../image/'.$item['main_image']}}"
                      align="left" class="img-rounded" hspace="3" width="320" height="240">
                 <label for="OutputTitle">
                     <p>
@@ -24,7 +24,7 @@
                 <table class="table" border="0">
                     <tr class="tr">
                         <td class="td1">
-                            <img src="https://i.ytimg.com/vi/xUKrZSNB44o/maxresdefault.jpg" class="img-rounded"
+                            <img src="{{'../image/'.$item['image1']}}" class="img-rounded"
                                  hspace="3" width="240" height="160">
                             <p class="set1">
                                 <label for="OutputSet1">セット１<br>
@@ -34,7 +34,7 @@
                             </p>
                         </td>
                         <td class="td2">
-                            <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/n/niwaka-6-nki/20161014/20161014205307.jpg"
+                            <img src="{{'../image/'.$item['image2']}}"
                                  class="img-rounded" hspace="3" width="240" height="160">
                             <p class="set2">
                                 <label for="OutputSet2">セット２<br>
@@ -44,7 +44,7 @@
                             </p>
                         </td>
                         <td class="td3">
-                            <img src="http://blogimg.goo.ne.jp/user_image/28/14/b409dad95cdbde8688afdf924db07948.jpg"
+                            <img src="{{'../image/'.$item['image3']}}"
                                  class="img-rounded" hspace="3" width="240" height="160">
                             <p class="set3">
                                 <label for="OutputSet2">セット３<br>
