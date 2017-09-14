@@ -20,28 +20,37 @@ Route::get('mypage','MypageController@index')->middleware('auth');
 
 //Route::get('mypage/', 'MypageController@index');
 //Route::get('mypage/{mypage}', 'MypageController@index');
-Route::get('mypage/show_answer', 'MypageController@show_answer');
+Route::get('mypage/show_answer', 'MypageController@show_answer')->middleware('auth');
 
 /*register*/
-Route::get('register/', 'RegisterController@index');
+Route::get('register/', 'RegisterController@index')->middleware('auth');;
 //Route::post('register/', 'RegisterController@post_form');
 //Route::get('register/confirm', 'RegisterController@confirm');
-Route::post('register/confirm', 'RegisterController@post_confirm');
-Route::post('register/end', 'RegisterController@post_end');
+Route::get('register/confirm', 'RegisterController@confirm')->middleware('auth');
+Route::post('register/confirm', 'RegisterController@post_confirm')->middleware('auth');
+
+Route::get('register/end', 'RegisterController@end')->middleware('auth');
+Route::post('register/end', 'RegisterController@post_end')->middleware('auth');
+
 
 /*answer*/
-Route::get('answer/{answer}', 'AnswerController@index');
-Route::post('answer/confirm', 'AnswerController@post_confirm');
-Route::post('answer/end', 'AnswerController@post_end');
+Route::get('answer/{answer}', 'AnswerController@index')->middleware('auth');
+Route::post('answer/confirm', 'AnswerController@post_confirm')->middleware('auth');
+Route::post('answer/end', 'AnswerController@post_end')->middleware('auth');
 
 /*twitter*/
 Route::get('twitter','TwitterController@RedirectToProvider');
 Route::get('twitter_callback','TwitterController@handleProviderCallback');
 
-Route::get('register/confirm', 'RegisterController@confirm');
-Route::post('register/confirm', 'RegisterController@post_confirm');
+//Route::Auth()
+// Authentication Routes...
+Route::get('login', [
+    'as' => 'login',
+    'uses' => 'MypageController@login'
+]);
+Route::post('login', [
+    'as' => '',
+    'uses' => 'MypageController@login'
+]);
 
-Route::get('register/end', 'RegisterController@end');
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::Auth();

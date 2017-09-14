@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Http\Request;
 use Session;
 use App\Models\Item;
@@ -21,9 +23,9 @@ class RegisterController extends Controller
   }
   public function post_end(Request $request){
       $item = Session::get("item");
-      var_dump($item);
+      $authuser = Auth::user();
       $id = Item::query()->insertGetId(
-                ['img' => "http://t2-workshop.com/wp-content/uploads/2017/05/fb66fcca77b69868214830faf050823f.jpg", 'title' => $item["title"], 'detail' => $item["detail"], 'user_id' => 5]
+                ['img' => "http://t2-workshop.com/wp-content/uploads/2017/05/fb66fcca77b69868214830faf050823f.jpg", 'title' => $item["title"], 'detail' => $item["detail"], 'user_id' => $authuser->user_id]
               );
 
       SendItem::query()->insert([
