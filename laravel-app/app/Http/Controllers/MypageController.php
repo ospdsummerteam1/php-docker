@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class MypageController extends Controller
 {
     // get mypage/{mypage}
-    public function index($id)
+    public function index()
     {
         //ログインしていなければloginページに飛ばす
 //        Item::all();
