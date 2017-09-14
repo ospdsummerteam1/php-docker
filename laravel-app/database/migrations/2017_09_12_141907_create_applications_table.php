@@ -20,7 +20,7 @@ class CreateApplicationsTable extends Migration
                     `item_id` int(11) DEFAULT NULL,
                     `status` tinyint(1) DEFAULT \'1\',
                     PRIMARY KEY (`application_id`)
-                    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;';
+                    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;';
             DB::connection()->getPdo()->exec($sql);
         });
     }

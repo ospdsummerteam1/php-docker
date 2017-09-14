@@ -22,7 +22,7 @@ class CreateItemsTable extends Migration
                     `status` tinyint(1) DEFAULT \'1\',
                     `user_id` text CHARACTER SET utf8,
                     PRIMARY KEY (`item_id`)
-                    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;';
+                    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;';
             DB::connection()->getPdo()->exec($sql);
         });
     }
