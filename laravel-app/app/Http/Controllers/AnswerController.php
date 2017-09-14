@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\Answer;
 use App\Models\Application;
 use App\Models\Item;
@@ -52,12 +53,15 @@ class AnswerController extends Controller
     public function post_end(Request $request){
         $value = $request->get("button");
 
+        $authuser = Auth::user();
+
         if($value == "submit"){
             $question_ids = Session::get("question_ids");
             $answers = Session::get("answers");
             $id = Session::get("application_id");
+            $user_id = $authuser->user_id;
 
-            $application_id = Application::query()->insertGetId(['user_id' => '' , 'item_id' => $id]);
+            $application_id = Application::query()->insertGetId(['user_id' => $user_id , 'item_id' => $id]);
 
             Answer::query()->insert([
                 ['answer' => $answers["answer0"], 'question_id' => $question_ids[0], 'application_id' => $application_id],
