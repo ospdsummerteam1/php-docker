@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\SendItem;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -36,12 +37,28 @@ class TopController extends Controller
         return view('top/list',compact('keyword','data'));
     }
 
-    public function detail($item_id){
+    public function detail(){
+        $id = 1;
+
         $query = Item::query();
 
-        $query->where('item_id','where',$item_id);
-        $data = $query;
+        $data['item'] = $query->where('item_id',$id)->get()->toArray()[0];
+
+        $sql = SendItem::query();
+        $data['send_item'] = $sql -> where('item_id',$data['item']['item_id']);
+
+        echo '<pre>';
+        var_dump($data);
+        exit();
+
+//        $query->where('item_id','where',$item_id);
+//        $data = $query;
 
         return view('top/detail',compact('data'));
     }
 }
+
+
+
+
+

@@ -37,7 +37,7 @@
                     <!--                    これは、ログイン後のメニュー-->
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="<?= isset($login) ? url("/mypage"): url("/login") ?>"><?= isset($login) ? '{user_name}' : 'ログイン' ?></a>
+                            <a href="<?= isset($login) ? url("/mypage") : url("/login") ?>"><?= isset($login) ? '{user_name}' : 'ログイン' ?></a>
                         </li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -49,12 +49,12 @@
                 <div class="container">
                     <div class="row">
                         <form method="get" action="{{url('/search')}}">
-                        <div class="input-group">
-                            <input type="text" name="keyword" class="form-control">
-                            <span class="input-group-btn">
+                            <div class="input-group">
+                                <input type="text" name="keyword" class="form-control">
+                                <span class="input-group-btn">
                             <input class="btn btn-default" type="submit" value="検索">
                             </span>
-                        </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -67,16 +67,19 @@
                     <div>
                         {{--{{$post}}--}}
                         @foreach($posts as $post)
-                        <a class="pull-left" href="{{$post->item_id}}">
                             <div class="panel panel-default">
-                                <img src="{{ $post->img }}">
-
+                                <div class="panel-body">
+                                    <a class="pull-left" href="{{$post->item_id}}">
+                                        <div class="panel panel-default">
+                                            <img src="{{ $post->img }}">
+                                        </div>
+                                    </a>
+                                    <div class="media-body">
+                                        <h2>{{ $post->title }}</h2>
+                                        <p>{{ $post->detail }}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
-                        <div class="media-body">
-                            <h2>{{ $post->title }}</h2>
-                            <p>{{ $post->detail }}</p>
-                        </div>
                         @endforeach
 
                     </div>
@@ -98,19 +101,19 @@
                     </ul>
                 </div>
             </div>
-
-            <footer class="footer">
-                <div class="container">
-                    <div class="pull-right hidden-xs">Version1.0</div>
-                    <strong>Copyright &copy; 2015</strong>, All rights reserved.
-                </div>
-            </footer>
         </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="pull-right hidden-xs">Version1.0</div>
+                <strong>Copyright &copy; 2015</strong>, All rights reserved.
+            </div>
+        </footer>
     </div>
+</div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

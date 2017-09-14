@@ -67,15 +67,19 @@
                     <div>
                         {{--{{$post}}--}}
                         @foreach($data as $post)
-                            <a class="pull-left" href="{{$post->item_id}}">
-                                <div class="panel panel-default">
-                                    <img src="{{ $post->img }}">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <a class="pull-left" href="{{$post->item_id}}">
+                                        <div class="panel panel-default">
+                                            <img src="{{ $post->img }}">
 
+                                        </div>
+                                    </a>
+                                    <div class="media-body">
+                                        <h2>{{ $post->title }}</h2>
+                                        <p>{{ $post->detail }}</p>
+                                    </div>
                                 </div>
-                            </a>
-                            <div class="media-body">
-                                <h2>{{ $post->title }}</h2>
-                                <p>{{ $post->detail }}</p>
                             </div>
                         @endforeach
 
