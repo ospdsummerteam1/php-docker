@@ -19,7 +19,7 @@
                     <!--                    これは、ログイン後のメニュー-->
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="<?= isset($login) ? url("/mypage") : url("/login") ?>"><?= isset($login) ? '{user_name}' : 'ログイン' ?></a>
+                            <a href="<?= Auth::check()  ? url("/mypage") : url("/login") ?>"><?= Auth::check() ? Auth::user()->user_name : 'ログイン' ?></a>
                         </li>
                     </ul>
                 </div><!--/.nav-collapse -->

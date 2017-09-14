@@ -96,7 +96,7 @@ class TwitterController extends Controller
             $user_id = Session::get('twitter_user_id');
             $user = Twitter::getUsers(['user_id' => $user_id]);
             $response = Twitter::postDM(['screen_name'=> "$user->screen_name", 'user_id'=> "$user->id",
-                'text' => "そろそろ相手に連絡してみませんか"]);
+                'text' => "そろそろ相手の方に連絡してみませんか"]);
         }
         catch (Exception $e)
         {
