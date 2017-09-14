@@ -69,9 +69,6 @@ class AnswerController extends Controller
                 ['answer' => $answers["answer2"], 'question_id' => $question_ids[2], 'application_id' => $application_id]
             ]);
 
-            $request->session()->forget('application_id');
-            $request->session()->forget('answerd');
-            $request->session()->forget('question_ids');
             return view('answer.end');
         }else if($value == "edit"){
             return view('answer.index',compact("questions"));

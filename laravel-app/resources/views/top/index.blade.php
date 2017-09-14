@@ -31,7 +31,7 @@
                                     <div class="panel-body">
                                         <a class="pull-left" href="{{url("/detail-").$post['item_id']}}">
                                             <div class="panel panel-default">
-                                                <img src="{{ $post->img }}">
+                                                <img src="{{"image/".$post->img }}">
                                             </div>
                                         </a>
                                         <div class="media-body">
