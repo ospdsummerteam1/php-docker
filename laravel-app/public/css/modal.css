@@ -57,3 +57,8 @@ body {
 .btn-edit:active{
     background-color: #ccc;
 }
+
+.form_conf form {
+    display: inline-block;
+    margin: 0 10px;
+}
