@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Models\Application;
 use App\Models\Item;
 use App\Models\Question;
 use Illuminate\Http\Request;
@@ -56,11 +57,17 @@ class AnswerController extends Controller
             $answers = Session::get("answers");
             $id = Session::get("application_id");
 
+            $application_id = Application::query()->insertGetId(['user_id' => '' , 'item_id' => $id]);
+
             Answer::query()->insert([
-                ['answer' => $answers["answer0"], 'question_id' => $question_ids[0], 'application_id' => $id],
-                ['answer' => $answers["answer1"], 'question_id' => $question_ids[1], 'application_id' => $id],
-                ['answer' => $answers["answer2"], 'question_id' => $question_ids[2], 'application_id' => $id]
+                ['answer' => $answers["answer0"], 'question_id' => $question_ids[0], 'application_id' => $application_id],
+                ['answer' => $answers["answer1"], 'question_id' => $question_ids[1], 'application_id' => $application_id],
+                ['answer' => $answers["answer2"], 'question_id' => $question_ids[2], 'application_id' => $application_id]
             ]);
+
+            $request->session()->foget('application_id');
+            $request->session()->foget('answerd');
+            $request->session()->foget('question_ids');
             return view('answer.end');
         }else if($value == "edit"){
             return view('answer.index',compact("questions"));
