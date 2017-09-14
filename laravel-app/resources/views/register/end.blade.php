@@ -10,7 +10,7 @@
     <title>Page Title</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- end -->
     <link href="css/end.css" rel="stylesheet">

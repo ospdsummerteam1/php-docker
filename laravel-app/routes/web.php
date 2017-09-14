@@ -25,12 +25,12 @@ Route::get('mypage/show_answer', 'MypageController@show_answer');
 
 /*register*/
 Route::get('register/', 'RegisterController@index');
-Route::post('register/', 'RegisterController@post_form');
+//Route::post('register/', 'RegisterController@post_form');
 
-Route::get('register/confirm', 'RegisterController@confirm');
+//Route::get('register/confirm', 'RegisterController@confirm');
 Route::post('register/confirm', 'RegisterController@post_confirm');
 
-Route::get('register/end', 'RegisterController@end');
+Route::post('register/end', 'RegisterController@post_end');
 
 /*answer*/
 Route::get('answer/{answer}', 'AnswerController@index');
