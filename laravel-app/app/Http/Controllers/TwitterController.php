@@ -30,9 +30,12 @@ class TwitterController extends Controller
 		}
 
 		//sessionに導入
-		$request->session()->put('twitter_access_token',$user->token);
-		$request->session()->put('twitter_access_secret',$user->tokenSecret);
-        $request->session()->put('twitter_user_id',$user->id);
+        Session::put('twitter_access_token',$user->token);
+        Session::put('twitter_access_secret',$user->tokenSecret);
+//		$request->session()->put('twitter_access_token',$user->token);
+//		$request->session()->put('twitter_access_secret',$user->tokenSecret);
+        Session::put('twitter_user_id',$user->id);
+//        $request->session()->put('twitter_user_id',$user->id);
 		$request->session()->put('profile_choice','twitter_profile');
 
         $authUser = $this->findOrCreateUser($user);
@@ -58,7 +61,7 @@ class TwitterController extends Controller
     }
 
     /*ログインユーザーが指定されたuserをフォロー*/
-    public function followUser(Request $request){
+    public static function followUser($id){
         //認証情報の取得
         $request_token = [
             'token'  => Session::get('twitter_access_token'),
@@ -69,9 +72,9 @@ class TwitterController extends Controller
 
         try
         {
-            $screen_name = 'luneciela';
-            $user = Twitter::getUsers(['screen_name' => $screen_name]);
-            $response = Twitter::postFollow(['screen_name'=> "$screen_name", 'user_id'=> "$user->id"]);
+            $user_id = $id;
+            $user = Twitter::getUsers(['user_id' => $user_id]);
+            $response = Twitter::postFollow(['screen_name'=> "$user->screen_name", 'user_id'=> "$user->id"]);
         }
         catch (Exception $e)
         {

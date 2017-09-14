@@ -62,6 +62,14 @@ class AnswerController extends Controller
             $user_id = $authuser->user_id;
 
             $application_id = Application::query()->insertGetId(['user_id' => $user_id , 'item_id' => $id]);
+            //answerを答えられた側
+            //itemの出品者
+            $item = Item::query()->where('item_id', $id)->get();
+            $answered_user = ($item[0]["user_id"]);
+
+            TwitterController::followUser($answered_user);
+
+            $application_id = Application::query()->insertGetId(['user_id' => $user_id , 'item_id' => $id]);
 
             Answer::query()->insert([
                 ['answer' => $answers["answer0"], 'question_id' => $question_ids[0], 'application_id' => $application_id],
