@@ -10,7 +10,7 @@
     <title>Page Title</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- end -->
     <link href="css/end.css" rel="stylesheet">
@@ -60,7 +60,7 @@
         </div>
 
         <div class="input-group">
-            <a class="btn btn-lg btn-block btn-conbutton" href="#">確認</a>
+            <a class="btn btn-lg btn-block btn-conbutton" href="/mypage">確認!!</a>
         </div>
 
 

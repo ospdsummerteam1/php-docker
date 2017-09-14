@@ -10,10 +10,10 @@
     <title>Page Title</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- end -->
-    <link href="css/modal.css" rel="stylesheet">
+    <link href="../css/modal.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,33 +51,33 @@
             </div>
         </nav>
 
-        <div class="container">
-            <form>
-                <div class="form-group">
-                    <label>Question1</label>
-                    <p>answer1 answer1 answer1 answer1 answer1</p>
-                </div>
-                <div class="form-group">
-                    <label>Question2</label>
-                    <p>answer2 answer2 answer2 answer2 answer2</p>
-                </div>
-                <div class="form-group">
-                    <label>Question3</label>
-                    <p>answer3 answer3 answer3 answer3 answer3</p>
-                </div>
-            </form>
-
-            <div class="container">
-                <div class="btn-toolbar">
-                    <div class="btn-group center-block">
-                        <div>
-                            <button type="submit" class="btn btn-submit btn-default">送信</button>
-                            <button type="submit" class="btn btn-edit btn-default">編集</button>
-                        </div>
-                    </div>
-                </div>
+        <div class="container text-center">
+            <div class="form-group">
+                <label>Question1</label>
+                <h4>{{$questions[0]}}</h4>
+                <p>{{$answers["answer0"]}}</p>
+            </div>
+            <div class="form-group">
+                <label>Question2</label>
+                <h4>{{$questions[1]}}</h4>
+                <p>{{$answers["answer1"]}}</p>
+            </div>
+            <div class="form-group">
+                <label>Question3</label>
+                <h4>{{$questions[2]}}</h4>
+                <p>{{$answers["answer2"]}}</p>
             </div>
 
+            <div class="form_conf" style="display:inline-flex">
+                <form method="post" action="/answer/end">
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-submit btn-default" name="button" value="submit">送信</button>
+                </form>
+                <form method="post" action="/answer/">
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-edit btn-default" name="button" value="edit">編集</button>
+                </form>
+            </div>
         </div>
 
         <footer class="footer">
@@ -92,7 +92,7 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 
 <script>
     $('#myModal').on('show.bs.modal', function (e) {

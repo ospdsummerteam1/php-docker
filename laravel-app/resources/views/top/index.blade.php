@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Page Description">
-    <title>Page Title</title>
+    <title>楽天コレクター</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -18,10 +18,10 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body >
+<body>
 <div class="container">
     <div class="row">
-        <nav class="navbar navbar-default navbar-fixed-top" >
+        <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -30,7 +30,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">楽天コレクター</a>
+                    <a class="navbar-brand" href="{{url('/')}}">楽天コレクター</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -40,7 +40,7 @@
                     <!--                    これは、ログイン後のメニュー-->
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="<?= isset($login) ? '{user_name}' : 'ログイン' ?>"><?= isset($login) ? '{user_name}' : 'ログイン' ?></a>
+                            <a href="<?= isset($login) ? url("/mypage") : url("/login") ?>"><?= isset($login) ? '{user_name}' : 'ログイン' ?></a>
                         </li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -48,17 +48,17 @@
         </nav>
         <div class="jumbotron">
             <div class="container">
-                <h3>検索結果</h3>
+                <h1>楽天コレクター</h1>
                 <div class="container">
                     <div class="row">
-                        <div class="input-group">
-                            <input type="text" class="form-control">
-                            <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
-                            <i class='glyphicon glyphicon-search'></i>
-                        </button>
-                    </span>
-                        </div>
+                        <form method="get" action="{{url('/search')}}">
+                            <div class="input-group">
+                                <input type="text" name="keyword" class="form-control">
+                                <span class="input-group-btn">
+                            <input class="btn btn-default" type="submit" value="検索">
+                            </span>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -66,33 +66,43 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="media">
-                    <a class="pull-left" href="#">
-                        <div class="panel panel-default">
-                            <img src="">
-
-                            <p>aaaaaaaaaa</p>
-                        </div>
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">見出し</h4>
-                    </div>
-                </div>
-
-                <ul class="media-list">
-                    <li class="media">
-                        <a class="pull-left" href="#">
+                    <h1>最新投稿一覧</h1>
+                    <div>
+                        {{--{{$post}}--}}
+                        @foreach($posts as $post)
                             <div class="panel panel-default">
-                                <img src="">
-
-                                <p>aaaaaaaaaa</p>
+                                <div class="panel-body">
+                                    <a class="pull-left" href="{{url("/detail-").$post['item_id']}}">
+                                        <div class="panel panel-default">
+                                            <img src="{{ $post->img }}">
+                                        </div>
+                                    </a>
+                                    <div class="media-body">
+                                        <h2>{{ $post->title }}</h2>
+                                        <p>{{ $post->detail }}</p>
+                                    </div>
+                                </div>
                             </div>
+                        @endforeach
 
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">見出し</h4>
-                        </div>
-                    </li>
-                </ul>
+                    </div>
+
+                    <ul class="media-list">
+                        <li class="media">
+                            <a class="pull-left" href="#">
+                                <div class="panel panel-default">
+                                    <img src="">
+
+                                    <p>aaaaaaaaaa</p>
+                                </div>
+
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">見出し</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 

@@ -10,21 +10,17 @@
     <title>Page Title</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script defer src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" />\
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- end -->
+    <link href="../css/modal.css" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script defer src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script defer src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link rel="stylesheet" href="css/jquery.bxslider.css">
-    <script defer src="js/jquery.bxslider.min.js"></script>
-    <script defer type="text/javascript">
-        $(document).ready(function() {
-            $('.bxslider').bxSlider();
-        });
-    </script>
 </head>
 <body>
 <div class="container">
@@ -54,49 +50,50 @@
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
-        <div class="jumbotron">
-            <div class="container">
-                <h1>〇〇〇〇</h1>
-            </div>
-        </div>
-    </div>
 
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="media">
-                <div class="panel panel-default pull-left">
-                    <img src="" style="width: 300px;height: 200px">
-                </div>
-                <div class="media-body text-center">
-                    <h2 class="media-heading">タイトル</h2>
-                    <p>説明ああああああああああああああああああああああああああああ<br>あああああああああああああああああああああああああああああああああ<br></p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <h5>分割配送分</h5>
-            <ul class="bxslider">
-                <li><img src="../asset/images/sample-01.png" alt="" style="width: 300px;height: 200px"></li>
-                <li><img src="../asset/images/sample-02.png" alt="" style="width: 300px;height: 200px"></li>
-            </ul>
-        </div>
-    </div>
-
-    <footer class="footer">
         <div class="container">
-            <div class="pull-right hidden-xs">Version1.0</div>
-            <strong>Copyright &copy; 2015</strong>, All rights reserved.
+            <form method="post" action="/answer/confirm">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <label>Question1</label>
+                    <h4>{{$questions[0]}}</h4>
+                    <input type="text" name="answer0" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Question2</label>
+                    <h4>{{$questions[1]}}</h4>
+                    <input type="text" name="answer1" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Question3</label>
+                    <h4>{{$questions[2]}}</h4>
+                    <input type="text" name="answer2" class="form-control">
+                </div>
+
+                <div class="input-group">
+                    <button class="btn btn-lg btn-block btn-conbutton" type="submit" value='send'>確認</button>
+                </div>
+            </form>
         </div>
-    </footer>
-</div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="pull-right hidden-xs">Version1.0</div>
+                <strong>Copyright &copy; 2015</strong>, All rights reserved.
+            </div>
+        </footer>
+    </div>
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+    $('#myModal').on('show.bs.modal', function (e) {
+        if (!data) return e.preventDefault() // stops modal from being shown
+    })
+</script>
 </body>
 </html>

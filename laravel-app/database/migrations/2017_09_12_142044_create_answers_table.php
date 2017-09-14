@@ -20,7 +20,7 @@ class CreateAnswersTable extends Migration
                     `question_id` int(11) DEFAULT NULL,
                     `answer` text CHARACTER SET utf8,
                     PRIMARY KEY (`answer_id`)
-                    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;';
+                    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;';
             DB::connection()->getPdo()->exec($sql);
         });
     }

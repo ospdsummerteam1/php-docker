@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class AlterTableUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $sql = 'CREATE TABLE `users` (
-                    `icon` text CHARACTER SET utf8,
-                    `user_name` char(50) CHARACTER SET utf8 NOT NULL DEFAULT \'\',
-                    `introduction` text CHARACTER SET utf8,
-                    `user_id` text CHARACTER SET utf8 NOT NULL
-                    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;';
+            $sql = 'ALTER TABLE `users` ADD `id` INT(11) UNSIGNED  NOT NULL  AUTO_INCREMENT  PRIMARY KEY AFTER `user_id`;';
             DB::connection()->getPdo()->exec($sql);
         });
     }
@@ -31,6 +26,9 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::table('users', function (Blueprint $table) {
+            $sql = 'ALTER TABLE `users` DROP `id`;';
+            DB::connection()->getPdo()->exec($sql);
+        });
     }
 }
