@@ -8,7 +8,7 @@
                 <div class="media">
                     <a class="pull-left" href="#">
                         <div class="panel panel-default">
-                            <img src="{{"image/".$user['icon']}}" width="200px">
+                            <img src="{{$user['icon']}}" width="200px">
                             {{--<p>aaaaaaaaaa</p>--}}
                         </div>
                     </a>
