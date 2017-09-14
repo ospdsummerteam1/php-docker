@@ -8,7 +8,7 @@
                 <div class="media">
                     <a class="pull-left" href="#">
                         <div class="panel panel-default">
-                            <img src="{{$iconurl = $user['icon']}}" width="200px">
+                            <img src="{{"image/".$user['icon']}}" width="200px">
                             {{--<p>aaaaaaaaaa</p>--}}
                         </div>
                     </a>
@@ -30,7 +30,7 @@
                         @foreach($user_items as $items)
                             <div class="list-group-item clearfix">
                                 <div class="profile-teaser-left">
-                                    <div class="profile-img"><img src={{$items["img"]}}/></div>
+                                    <div class="profile-img"><img src={{"image/".$items["img"]}}/></div>
                                 </div>
                                 <div class="profile-teaser-main">
                                     <h2 class="profile-name">{{$items["title"]}}</h2>
@@ -52,16 +52,8 @@
                         @foreach($resive as $res)
                             <div class="list-group-item clearfix">
                                 <div class="profile-teaser-left">
-                                    {{--<div class="profile-img"><img src={{$user_items[0]["img"]}}/></div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="profile-teaser-main">--}}
-                                    {{--<h2 class="profile-name">{{$selected_items[0]["title"]}}</h2>--}}
-                                    {{--<div class="profile-info">--}}
-                                    {{--<div class="info"><span class="">Detail:</span> {{$selected_items[0]["detail"]}}</div>--}}
-                                    {{--<div class="info"><span class="">Status:</span> {{$selected_items[0]["status"]}}</div>--}}
-                                    {{--</div>--}}
                                     <div class="profile-img"><img
-                                                src="{{$res['icon']}}"/></div>
+                                                src="{{"image/".$res['icon']}}"/></div>
                                 </div>
                                 <div class="profile-teaser-main">
                                     <h2 class="profile-name">{{$res['user_name']}}</h2>
@@ -85,7 +77,7 @@
                             <div class="list-group-item clearfix">
                                 <div class="profile-teaser-left">
                                     <div class="profile-img">
-                                        <img src="{{$sine['img']}}"/></div>
+                                        <img src="{{"image/".$sine['img']}}"/></div>
                                 </div>
                                 <div class="profile-teaser-main">
                                     <h2 class="name">{{$sine['title']}}</h2>
