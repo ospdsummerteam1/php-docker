@@ -10,7 +10,6 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/index.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,7 +21,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -31,7 +30,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">楽天コレクター</a>
+                    <a class="navbar-brand" href="{{url('/')}}">楽天コレクター</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -41,7 +40,7 @@
                     <!--                    これは、ログイン後のメニュー-->
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="<?= isset($login) ? '{user_name}' : 'ログイン' ?>"><?= isset($login) ? '{user_name}' : 'ログイン' ?></a>
+                            <a href="<?= isset($login) ? url("/mypage") : url("/login") ?>"><?= isset($login) ? '{user_name}' : 'ログイン' ?></a>
                         </li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -49,53 +48,60 @@
         </nav>
         <div class="jumbotron">
             <div class="container">
-                <div class="row">
-                    <form class="form-inline" action="<?=url('/search')?>"></form>
-                    <div class="input-group">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="submit">
-                                <i class='glyphicon glyphicon-search'></i>
-                            </button>
-                        </span>
+                <h1>楽天コレクター</h1>
+                <div class="container">
+                    <div class="row">
+                        <form method="get" action="{{url('/search')}}">
+                            <div class="input-group">
+                                <input type="text" name="keyword" class="form-control">
+                                <span class="input-group-btn">
+                            <input class="btn btn-default" type="submit" value="検索">
+                            </span>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="container">
-            <h2>最近のオススメ</h2>
-            <div class="row">
-                <div class="list-group">
-                    <div class="list-group-item clearfix">
-                        <div class="profile-teaser-left">
-                            <div class="profile-img"><img src="https://static.pexels.com/photos/21011/pexels-photo-large.jpg"/></div>
-                        </div>
-                        <div class="profile-teaser-main">
-                            <h2 class="profile-name">Jane Doe</h2>
-                            <div class="profile-info">
-                                <div class="info"><span class="">Info:</span> Something here</div>
-                                <div class="info"><span class="">Info:</span> Something here</div>
-                                <div class="info"><span class="">Info:</span> Something here</div>
-                                <div class="info"><span class="">Info:</span> Something here</div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="media">
+                    <h1>最新投稿一覧</h1>
+                    <div>
+                        {{--{{$post}}--}}
+                        @foreach($posts as $post)
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <a class="pull-left" href="{{url("/detail-").$post['item_id']}}">
+                                        <div class="panel panel-default">
+                                            <img src="{{ $post->img }}">
+                                        </div>
+                                    </a>
+                                    <div class="media-body">
+                                        <h2>{{ $post->title }}</h2>
+                                        <p>{{ $post->detail }}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div><!-- item -->
+                        @endforeach
 
-                    <div class="list-group-item clearfix">
-                        <div class="profile-teaser-left">
-                            <div class="profile-img"><img src="https://static.pexels.com/photos/21011/pexels-photo-large.jpg"/></div>
-                        </div>
-                        <div class="profile-teaser-main">
-                            <h2 class="profile-name">Jane Doe</h2>
-                            <div class="profile-info">
-                                <div class="info"><span class="">Info:</span> Something here</div>
-                                <div class="info"><span class="">Info:</span> Something here</div>
-                                <div class="info"><span class="">Info:</span> Something here</div>
-                                <div class="info"><span class="">Info:</span> Something here</div>
+                    </div>
+
+                    <ul class="media-list">
+                        <li class="media">
+                            <a class="pull-left" href="#">
+                                <div class="panel panel-default">
+                                    <img src="">
+
+                                    <p>aaaaaaaaaa</p>
+                                </div>
+
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">見出し</h4>
                             </div>
-                        </div>
-                    </div><!-- item -->
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
