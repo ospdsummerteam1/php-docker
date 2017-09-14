@@ -41,6 +41,7 @@ Route::post('answer/end', 'AnswerController@post_end')->middleware('auth');
 /*twitter*/
 Route::get('twitter','TwitterController@RedirectToProvider');
 Route::get('twitter_callback','TwitterController@handleProviderCallback');
+Route::get('twitter_follow','TwitterController@followUser');
 
 //Route::Auth()
 // Authentication Routes...
