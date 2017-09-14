@@ -10,10 +10,10 @@
     <title>Page Title</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- end -->
-    <link href="css/modal.css" rel="stylesheet">
+    <link href="../css/modal.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,24 +52,28 @@
         </nav>
 
         <div class="container">
-            <form>
+            <form method="post" action="/answer/confirm">
+                {{ csrf_field() }}
                 <div class="form-group">
                     <label>Question1</label>
-                    <input type="text" name="email" class="form-control">
+                    <h4>{{$questions[0]}}</h4>
+                    <input type="text" name="answer0" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Question2</label>
-                    <input type="text" name="password" class="form-control">
+                    <h4>{{$questions[1]}}</h4>
+                    <input type="text" name="answer1" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Question3</label>
-                    <input type="text" name="password" class="form-control">
+                    <h4>{{$questions[2]}}</h4>
+                    <input type="text" name="answer2" class="form-control">
+                </div>
+
+                <div class="input-group">
+                    <button class="btn btn-lg btn-block btn-conbutton" type="submit" value='send'>確認</button>
                 </div>
             </form>
-
-            <div class="input-group">
-                <button class="btn btn-lg btn-block btn-conbutton" type="submit">確認</button>
-            </div>
         </div>
 
         <footer class="footer">
@@ -84,7 +88,7 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 
 <script>
     $('#myModal').on('show.bs.modal', function (e) {

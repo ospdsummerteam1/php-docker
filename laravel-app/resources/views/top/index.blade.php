@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Page Description">
-    <title>Page Title</title>
+    <title>楽天コレクター</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,51 +49,54 @@
         </nav>
         <div class="jumbotron">
             <div class="container">
-                <h1>楽天コレクター</h1>
-                <div class="container">
-                    <div class="row">
-                        <div class="input-group">
-                            <input type="text" class="form-control">
-                            <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
-                            <i class='glyphicon glyphicon-search'></i>
-                        </button>
-                    </span>
-                        </div>
+                <div class="row">
+                    <form class="form-inline" action="<?=url('/search')?>"></form>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class='glyphicon glyphicon-search'></i>
+                            </button>
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <div class="panel panel-default">
-                            <img src="">
 
-                            <p>aaaaaaaaaa</p>
+        <div class="container">
+            <h2>最近のオススメ</h2>
+            <div class="row">
+                <div class="list-group">
+                    <div class="list-group-item clearfix">
+                        <div class="profile-teaser-left">
+                            <div class="profile-img"><img src="https://static.pexels.com/photos/21011/pexels-photo-large.jpg"/></div>
                         </div>
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">見出し</h4>
-                    </div>
-                </div>
-
-                <ul class="media-list">
-                    <li class="media">
-                        <a class="pull-left" href="#">
-                            <div class="panel panel-default">
-                                <img src="">
-
-                                <p>aaaaaaaaaa</p>
+                        <div class="profile-teaser-main">
+                            <h2 class="profile-name">Jane Doe</h2>
+                            <div class="profile-info">
+                                <div class="info"><span class="">Info:</span> Something here</div>
+                                <div class="info"><span class="">Info:</span> Something here</div>
+                                <div class="info"><span class="">Info:</span> Something here</div>
+                                <div class="info"><span class="">Info:</span> Something here</div>
                             </div>
-
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">見出し</h4>
                         </div>
-                    </li>
-                </ul>
+                    </div><!-- item -->
+
+                    <div class="list-group-item clearfix">
+                        <div class="profile-teaser-left">
+                            <div class="profile-img"><img src="https://static.pexels.com/photos/21011/pexels-photo-large.jpg"/></div>
+                        </div>
+                        <div class="profile-teaser-main">
+                            <h2 class="profile-name">Jane Doe</h2>
+                            <div class="profile-info">
+                                <div class="info"><span class="">Info:</span> Something here</div>
+                                <div class="info"><span class="">Info:</span> Something here</div>
+                                <div class="info"><span class="">Info:</span> Something here</div>
+                                <div class="info"><span class="">Info:</span> Something here</div>
+                            </div>
+                        </div>
+                    </div><!-- item -->
+                </div>
             </div>
         </div>
 

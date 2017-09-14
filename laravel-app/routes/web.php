@@ -18,26 +18,23 @@ Route::get('/detail', 'TopController@detail');
 
 /*mypage*/
 Route::get('login/', 'MypageController@login');
-Route::post('login/', 'MypageController@login_post');
 
-Route::get('mypage/', 'MypageController@index');
+Route::get('mypage/', 'MypageController@login');
+Route::get('mypage/{mypage}', 'MypageController@index');
 Route::get('mypage/show_answer', 'MypageController@show_answer');
-Route::post('mypage/', 'MypageController@mypage_post');
 
 /*register*/
 Route::get('register/', 'RegisterController@index');
-Route::post('register/', 'RegisterController@post_form');
+//Route::post('register/', 'RegisterController@post_form');
 
-Route::get('register/confirm', 'RegisterController@confirm');
+//Route::get('register/confirm', 'RegisterController@confirm');
 Route::post('register/confirm', 'RegisterController@post_confirm');
 
-Route::get('register/end', 'RegisterController@end');
+Route::post('register/end', 'RegisterController@post_end');
 
 /*answer*/
-Route::get('answer', 'AnswerController@index');
-Route::post('answer', 'AnswerController@post_quest');
+Route::get('answer/{answer}', 'AnswerController@index');
 
-Route::get('answer/confirm', 'AnswerController@confirm');
 Route::post('answer/confirm', 'AnswerController@post_confirm');
 
-Route::get('answer/end', 'AnswerController@end');
+Route::post('answer/end', 'AnswerController@post_end');

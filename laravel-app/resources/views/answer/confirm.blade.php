@@ -10,10 +10,10 @@
     <title>Page Title</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- css -->
-    <link href="css/login.css" rel="stylesheet">
+    <!-- end -->
+    <link href="../css/modal.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,32 +50,34 @@
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-md-4 col-md-offset-4">
-                    <h1 class="text-center login-title">Sign in to continue to Bootsnipp</h1>
-                        <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
-                             alt="">
-                        <form class="form-signin">
-                            <input type="text" class="form-control" placeholder="Email" required autofocus>
-                            <input type="password" class="form-control" placeholder="Password" required>
-                            <button class="btn btn-lg btn-primary btn-block" type="submit">
-                                Sign in</button>
-                            <label class="checkbox pull-left">
-                                <input type="checkbox" value="remember-me">
-                                Remember me
-                            </label>
-                            <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
-                        </form>
-                </div>
-            </div>
-        </div>
 
-        <div class="input-group">
-					<span class="input-group-addon addon-twitter">
-						<i class="fa fa-fw fa-2x fa-twitter fa-fw"></i>
-					</span>
-            <a class="btn btn-lg btn-block btn-twitter" href="#"> Register with Twitter</a>
+        <div class="container text-center">
+            <div class="form-group">
+                <label>Question1</label>
+                <h4>{{$questions[0]}}</h4>
+                <p>{{$answers["answer0"]}}</p>
+            </div>
+            <div class="form-group">
+                <label>Question2</label>
+                <h4>{{$questions[1]}}</h4>
+                <p>{{$answers["answer1"]}}</p>
+            </div>
+            <div class="form-group">
+                <label>Question3</label>
+                <h4>{{$questions[2]}}</h4>
+                <p>{{$answers["answer2"]}}</p>
+            </div>
+
+            <div class="form_conf" style="display:inline-flex">
+                <form method="post" action="/answer/end">
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-submit btn-default" name="button" value="submit">送信</button>
+                </form>
+                <form method="post" action="/answer/">
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-edit btn-default" name="button" value="edit">編集</button>
+                </form>
+            </div>
         </div>
 
         <footer class="footer">
@@ -90,6 +92,12 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+    $('#myModal').on('show.bs.modal', function (e) {
+        if (!data) return e.preventDefault() // stops modal from being shown
+    })
+</script>
 </body>
 </html>

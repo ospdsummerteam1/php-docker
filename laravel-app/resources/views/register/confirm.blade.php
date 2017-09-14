@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>出品確認</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
 				<!--[if lt IE 9]>
 					<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 					<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -43,11 +43,11 @@
       <img src="http://t2-workshop.com/wp-content/uploads/2017/05/fb66fcca77b69868214830faf050823f.jpg" align="left" class="img-rounded" hspace="3" width="320" height="240">
 				 <label for="OutputTitle">
 					 <p>
-					 {{$allanswers["title"]}}
+					 {{$item["title"]}}
 				 </p>
 					 <br>
 					 <p>
-					 {{$allanswers["detail"]}}
+					 {{$item["detail"]}}
 				 </p>
 		 </div><br clear="left">
 
@@ -59,7 +59,7 @@
           <p class="set1">
             <label for="OutputSet1">セット１<br>
 							<p>
-	 					 {{$allanswers["image1-detail"]}}
+	 					 {{$item["image1-detail"]}}
 
 	 				 </p>
         </td>
@@ -68,7 +68,7 @@
           <p class="set2">
             <label for="OutputSet2">セット２<br>
 							<p>
-	 					 {{$allanswers["image2-detail"]}}
+	 					 {{$item["image2-detail"]}}
 
 	 				 </p>
         </td>
@@ -77,7 +77,7 @@
           <p class="set3">
             <label for="OutputSet2">セット３<br>
 							<p>
-	 					 {{$allanswers["image3-detail"]}}
+	 					 {{$item["image3-detail"]}}
 
 	 				 </p>
         </td>
@@ -89,7 +89,7 @@
       <label for="question1">質問１<br>
       <label for="Outputquestion1">
 				<p>
-				{{$allanswers["question1"]}}
+				{{$item["question1"]}}
 
 			</p><br>
     </div><br>
@@ -98,7 +98,7 @@
 			<label for="question2">質問２<br>
       <label for="Outputquestion2">
 				<p>
-					{{$allanswers["question2"]}}
+					{{$item["question2"]}}
 
 			</p><br>
     </div><br>
@@ -107,7 +107,7 @@
 			<label for="question3">質問３<br>
       <label for="Outputquestion3">
 				<p>
-				{{$allanswers["question3"]}}
+				{{$item["question3"]}}
 
 			</p><br>
     </div><br>
@@ -117,9 +117,8 @@
                     {{ csrf_field() }}
                     <button type="submit" class="btn btn-submit btn-default" name="button" value="submit">登録</button>
                 </form>
-                <form method="post" action="/resister/">
-                    {{ csrf_field() }}
-                    <button type="submit" class="btn btn-edit btn-default" name="button" value="edit">編集</button>
+                <form method="get" action="/register/">
+                    <button type="submit" class="btn btn-edit btn-default" >編集</button>
                 </form>
            </div>
 

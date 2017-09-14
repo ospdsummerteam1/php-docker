@@ -37,31 +37,32 @@
 	</nav>
 
 		<h1>出品登録フォーム</h1>
-		<form action="/register" method="post">
+		<form action="/register/confirm" method="post">
 			<?php echo csrf_field(); ?>
 			<div class="form-group">
 				<label for="InputTitle">タイトル<br>
-				 <input name='title' class="form-control" id="InputTitle" placeholder="タイトルを入力してください。" >
+				 <input name='title' class="form-control" id="InputTitle"
+				 placeholder="タイトルを入力してください。" value="<?php echo($item['title']);?>">
 			 </label>
 			</div>
 			<div class="form-group">
 		    <label for="InputItemDetail">商品説明<br>
-		    <input name='detail' class="form-control" id="InputItemDetail" placeholder="商品説明を入力してください。"></input><br>
+		    <input name='detail' class="form-control" id="InputItemDetail" placeholder="商品説明を入力してください。" value="<?php echo($item['detail']);?>"></input><br>
 				</label>
 	    </div>
 			<div class="form-group">
 		    <label for="InputQuestion1">質問項目１</label><br>
-		    <input name='question1' class="form-control" id="InputItemQuestion1" placeholder="質問項目１を入力してください。"></input><br>
+		    <input name='question1' class="form-control" id="InputItemQuestion1" placeholder="質問項目１を入力してください。" value="<?php echo($item['question1']);?>"></input><br>
 				</label>
 			</div>
 			<div class="form-group">
 		    <label for="InputQuestion2">質問項目２</label><br>
-		    <input name='question2' class="form-control" id="InputItemQuestion2" placeholder="質問項目２を入力してください。"></input><br>
+		    <input name='question2' class="form-control" id="InputItemQuestion2" placeholder="質問項目２を入力してください。" value="<?php echo($item['question2']);?>"></input><br>
         </label>
 			</div>
 			<div class="form-group">
 		    <label for="InputQuestion3">質問項目３</label><br>
-		    <input name='question3' class="form-control" id="InputItemQuestion3" placeholder="質問項目３を入力してください。"></input><br>
+		    <input name='question3' class="form-control" id="InputItemQuestion3" placeholder="質問項目３を入力してください。" value="<?php echo($item['question3']);?>"></input><br>
         </label>
 			</div>
 		<br>
@@ -83,7 +84,7 @@
 				</span>
 			</label>
 			<input type="text" class="form-control" readonly=""><br>
-			<input name="image1-detail" class="form-control" id="InputSet1" placeholder="セット１の説明を入力してください。"></input>
+			<input name="image1-detail" class="form-control" id="InputSet1" placeholder="セット１の説明を入力してください。" value="<?php echo($item['image1-detail']);?>"></input>
 		</div><br>
 
 		<div class="input-group2">
@@ -93,7 +94,7 @@
 				</span>
 			</label>
 			<input type="text" class="form-control" readonly=""><br>
-			<input name="image2-detail" class="form-control" id="InputSet2" placeholder="セット２の説明を入力してください。"></input>
+			<input name="image2-detail" class="form-control" id="InputSet2" placeholder="セット２の説明を入力してください。"  value="<?php echo($item['image2-detail']);?>"></input>
 		</div><br>
 
 		<div class="input-group3">
@@ -103,7 +104,7 @@
 				</span>
 			</label>
 			<input type="text" class="form-control" readonly=""><br>
-			<input name="image3-detail" class="form-control" id="InputSet1" placeholder="セット３の説明を入力してください。"></input>
+			<input name="image3-detail" class="form-control" id="InputSet1" placeholder="セット３の説明を入力してください。"  value="<?php echo($item['image3-detail']);?>"></input>
 		</div><br>
 
 		<input class="btn btn-default" type="submit" value="確認"><br>
