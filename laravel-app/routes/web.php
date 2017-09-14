@@ -11,29 +11,37 @@
 |
 */
 
-Route::get('/', function () {
-    return view('top.index');
-});
+/*top*/
+Route::resource('/', 'TopController');
+Route::get('/search', 'TopController@search');
+Route::get('/detail', 'TopController@detail');
 
-Route::get('/answer', function (){
-   return view('answer.index');
-});
+/*mypage*/
+Route::get('login/', 'MypageController@login');
+Route::post('login/', 'MypageController@login_post');
 
-Route::get('/mypage', function (){
-    return view('mypage.index');
-});
+Route::get('mypage/', 'MypageController@index');
+Route::get('mypage/show_answer', 'MypageController@show_answer');
+Route::post('mypage/', 'MypageController@mypage_post');
 
-Route::get('/login', function (){
-    return view('mypage.login');
-});
+/*register*/
+Route::get('register/', 'RegisterController@index');
+Route::post('register/', 'RegisterController@post_form');
 
-Route::get('/register', function (){
-    return view('register.index');
+/*twitter*/
+Route::get('twitter','TwitterController@RedirectToProvider');
+Route::get('twitter_callback','TwitterController@handleProviderCallback');
 
-});
+Route::get('register/confirm', 'RegisterController@confirm');
+Route::post('register/confirm', 'RegisterController@post_confirm');
 
-//Route to Twitter
-Route::get('auth/twitter','Auth\AuthController@redirectToProvider');
+Route::get('register/end', 'RegisterController@end');
 
-Route::get('auth/twitter/callback','Auth\AuthController@hand
-leProviderCallback');
+/*answer*/
+Route::get('answer', 'AnswerController@index');
+Route::post('answer', 'AnswerController@post_quest');
+
+Route::get('answer/confirm', 'AnswerController@confirm');
+Route::post('answer/confirm', 'AnswerController@post_confirm');
+
+Route::get('answer/end', 'AnswerController@end');

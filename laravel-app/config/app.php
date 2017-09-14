@@ -178,8 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 				
 				/*Twitter_API*/
-				Laravel\Socialite\SocialiteServiceProvide::class,
-
+	Laravel\Socialite\SocialiteServiceProvider::class,
+			],
     /*
     |--------------------------------------------------------------------------
     | Class Aliases
@@ -226,6 +226,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-				'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+	'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 ];

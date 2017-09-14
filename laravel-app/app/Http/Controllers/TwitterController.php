@@ -19,19 +19,22 @@ class TwitterController extends Controller
 	/*Twitterからユーザー情報を取得する*/
 	public function handleProviderCallback()
 	{
-		$user = Socailite::driver('twitter')->user();
+		try{		
+				$user = Socailite::driver('twitter')->user();
 		
-		'twitter'=>[
-					'client_id' => env('TWTTER_CLIENT_ID') ,//envファイルに記載
-					'client_secret' => env('CALLBACK_URL'),
-					'redict' => env('CALLBACK_URL'),
-		],
+		}catch (Exception $e){
+			return redirect('auth/twitter');
+		}
 
-		//oath two providers
-		$response .= print_r($user,true);//bool print_r( mixed expression [, bool return ] )
-		return $response;
+		$request->session()->put('twitter_access_token',$user->token);
+		$request->session()->put('twitter_access_secret',$user->tokenSecret);
+		$request->session()->put('twitter_access_token',$user->getName());
+		$request->session()->put('twitter_access_token',$user->getAvatar());
+		$request->session()->put('profile_choice','twitter_profile');
+
+		return redirect()
+							->route('')
+							->withInput($request->except(['action','confirming']));
 	}
 
 }
-
-
