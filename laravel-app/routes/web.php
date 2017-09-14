@@ -16,7 +16,6 @@ Route::get('/detail-{id}', 'TopController@detail');
 
 /*mypage*/
 Route::get('login/', 'MypageController@login');
-
 Route::get('mypage','MypageController@index')->middleware('auth');
 
 //Route::get('mypage/', 'MypageController@index');
