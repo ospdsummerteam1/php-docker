@@ -6,18 +6,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>出品登録フォーム</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../assets/sass/resister.css" rel="stylesheet">
 		<!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		  <script src=“../vendor/twbs/bootstrap/dist/js/bootstrap.min.js”></script>
-		<![endif]-->
+		<![endif]->
+		
 	</head>
 
 	<body>
+	<div class="container">
 	<nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
+                <div class="conatiner">
+		<div class="navbar-header">
                     <!--                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"-->
                     <!--                            aria-expanded="false" aria-controls="navbar">-->
                     <!--                    </button>-->
@@ -35,7 +38,8 @@
                 </div><!--/.nav-collapse -->
             </div>
 	</nav>
-
+	<div class="container">
+	<br></br>	
 		<h1>出品登録フォーム</h1>
 		<form action="/register/confirm" method="post">
 			<?php echo csrf_field(); ?>
@@ -77,7 +81,7 @@
 			<input type="text" class="form-control" readonly=""><br>
 		</div><br>
 
-		<div class="input-group1">
+		<div class="input-group1 input-file preview">
 			<label class="input-group1-btn">
 				<span class="btn btn-primary">
 					セット１<input type="file" style="display:none" class="uploadFile">
@@ -107,9 +111,9 @@
 			<input name="image3-detail" class="form-control" id="InputSet1" placeholder="セット３の説明を入力してください。"  value="<?php echo($item['image3-detail']);?>"></input>
 		</div><br>
 
-		<input class="btn btn-default" type="submit" value="確認"><br>
+		<input class="btn btn-default" type="submit" style="position: relative;left:580px;top:50px;" value="確認"><br></div></br>
 </form>
-
+</div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
