@@ -30,21 +30,21 @@ class MypageController extends Controller
         #申し込みした商品
         $signupquery = Application::query();
         $signup = $signupquery->join('items', "applications.item_id", '=', 'items.item_id')
-                ->where('applications.user_id', $user['user_id'])->where('applications.status', 1)->get()->toArray();
+            ->where('applications.user_id', $user['user_id'])->where('applications.status', 1)->get()->toArray();
 
-        $resive=[];
+        $resive = [];
 
         #申し込みされた商品
         foreach ($user_items as $item) {
             $resivequery = Application::query();
             $res = $resivequery->join('users', "applications.user_id", '=', 'users.user_id')
-                ->where('applications.item_id', $item['item_id'])->get()->toArray();
+                ->where('applications.item_id', $item['item_id'])->where('applications.status',1)->get()->toArray();
 
             if (!empty($res)) {
                 $resive[] = $res[0];
             }
         }
-        return view('mypage.index', compact("user", "user_items", "signup","resive"));
+        return view('mypage.index', compact("user", "user_items", "signup", "resive"));
     }
 
     // post mypage/
@@ -56,9 +56,43 @@ class MypageController extends Controller
     }
 
     // get mypage/answer/
-    public function show_answer()
+    public function show_answer(Request $request)
     {
-        return view('mypage.show_answer');
+        $id = $request->all();
+
+        $answerquery = Answer::query();
+        $answer = $answerquery->where('application_id', $id)->get()->toArray();
+
+        foreach ($answer as $answer_id)
+        {
+            $query = Question::query();
+            $question[] = $query->where('question_id', $answer_id['question_id'])->get()->toArray();
+        }
+
+        $data[] = array_merge($answer[0],$question[0][0],$id);
+        $data[] = array_merge($answer[1],$question[1][0],$id);
+        $data[] = array_merge($answer[2],$question[2][0],$id);
+
+        return view('mypage.show_answer', compact('data'));
+    }
+
+    public function result(Request $request){
+        $id = $request->all();
+
+        if (array_keys($id)[0] === "not"){
+            $query = Application::query();
+            $query ->where('application_id',$id)
+                ->update(['status'=>0]);
+            return redirect('/mypage');
+        } else{
+            $query = Application::query();
+            $query ->join('items','applications.item_id','=','items.item_id')
+                ->where('applications.application_id', $id)
+                ->update(['items.status'=>0],['applications.status'=>0]);
+            return redirect('/');
+        }
+
+
     }
 
     /*login*/

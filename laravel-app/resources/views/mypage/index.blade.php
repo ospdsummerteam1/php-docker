@@ -9,7 +9,6 @@
                     <a class="pull-left" href="#">
                         <div class="panel panel-default">
                             <img src="{{$user['icon']}}" width="200px">
-                            {{--<p>aaaaaaaaaa</p>--}}
                         </div>
                     </a>
                     <div class="media-body">
@@ -28,69 +27,60 @@
                 <div class="row">
                     <div class="list-group">
                         @foreach($user_items as $items)
-                            <div class="list-group-item clearfix">
-                                <div class="profile-teaser-left">
-                                    <div class="profile-img"><img src={{"image/".$items["img"]}}/></div>
-                                </div>
-                                <div class="profile-teaser-main">
-                                    <h2 class="profile-name">{{$items["title"]}}</h2>
-                                    <div class="profile-info">
-                                        <div class="info"><span class="">Detail:</span> {{$items["detail"]}}</div>
-                                        <div class="info"><span class="">Status:</span> {{$items["status"]}}</div>
-                                        {{--<div class="info"><span class="">Info:</span> Something here</div>--}}
-                                        {{--<div class="info"><span class="">Info:</span> Something here</div>--}}
+                            <div class="row">
+                                <div class="list-group-item clearfix">
+                                    <div class="profile-teaser-left">
+                                        <div class="profile-img"><img src={{"image/".$items["img"]}}/></div>
                                     </div>
-                                </div>
-                            </div><!-- item -->
+                                    <div class="profile-teaser-main">
+                                        <h2 class="profile-name">{{$items["title"]}}</h2>
+                                        <div class="profile-info">
+                                            <div class="info"><span class="">Detail:</span> {{$items["detail"]}}</div>
+                                            <div class="info"><span class="">Status:</span> {{$items["status"]}}</div>
+                                        </div>
+                                    </div>
+                                </div><!-- item -->
+                            </div>
                         @endforeach
                     </div>
                 </div>
 
-                <h3>返答された商品</h3>
+                <h3>申し込みされたコレクション</h3>
                 <div class="row">
                     <div class="list-group">
                         @foreach($resive as $res)
                             <div class="list-group-item clearfix">
-                                <div class="profile-teaser-left">
+                                <div class="profile-teaser-left col-md-4">
                                     <div class="profile-img"><img
-                                                src="{{"image/".$res['icon']}}"/></div>
+                                                src="{{$res['icon']}}" width="200px"/></div>
                                 </div>
-                                <div class="profile-teaser-main">
+                                <div class="profile-teaser-main col-md-8">
                                     <h2 class="profile-name">{{$res['user_name']}}</h2>
-                                    <div class="profile-info">
-                                        <div class="info"><span class="">Info:</span> Something here</div>
-                                        <div class="info"><span class="">Info:</span> Something here</div>
-                                        <div class="info"><span class="">Info:</span> Something here</div>
-                                        <div class="info"><span class="">Info:</span> Something here</div>
-                                    </div>
+                                    <form action="{{url('mypage/show_answer')}}" method="get">
+                                        <input type="hidden" name="id" value="{{$res['application_id']}}">
+                                        <input type="submit" value="回答を見る" class="btn btn-lg btn-warning">
+                                    </form>
                                 </div>
                             </div>
                         @endforeach
                     </div><!-- item -->
                 </div>
-            </div>
-            <div class="container">
-                <h3>質問した商品</h3>
+                <h3>申し込んだコレクション</h3>
                 <div class="row">
                     <div class="list-group">
                         @foreach($signup as $sine)
-                            <div class="list-group-item clearfix">
-                                <div class="profile-teaser-left">
-                                    <div class="profile-img">
-                                        <img src="{{"image/".$sine['img']}}"/></div>
-                                </div>
-                                <div class="profile-teaser-main">
-                                    <h2 class="name">{{$sine['title']}}</h2>
-                                    <div class="info">
-                                        <div class="info"><span class="">Info:</span> Something here</div>
-                                        <div class="info"><span class="">Info:</span> Something here</div>
-                                        <div class="info"><span class="">Info:</span> Something here</div>
-                                        <div class="info"><span class="">Info:</span> Something here</div>
+                            <div class="row">
+                                <div class="list-group-item clearfix">
+                                    <div class="profile-teaser-left col-md-4">
+                                        <div class="profile-img">
+                                            <img src="{{"image/".$sine['img']}}"/></div>
                                     </div>
-                                </div>
-                            </div><!-- item -->
+                                    <div class="profile-teaser-main col-md-8">
+                                        <h2 class="name">{{$sine['title']}}</h2>
+                                    </div>
+                                </div><!-- item -->
+                            </div>
                         @endforeach
-
                     </div>
                 </div>
             </div>

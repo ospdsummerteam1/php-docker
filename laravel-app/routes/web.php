@@ -26,7 +26,7 @@ Route::get('mypage/show_answer', 'MypageController@show_answer')->middleware('au
 Route::get('register/', 'RegisterController@index')->middleware('auth');;
 //Route::post('register/', 'RegisterController@post_form');
 //Route::get('register/confirm', 'RegisterController@confirm');
-Route::get('register/confirm', 'RegisterController@confirm')->middleware('auth');
+Route::get('register/confirm', 'egisterController@confirm')->middleware('auth');
 Route::post('register/confirm', 'RegisterController@post_confirm')->middleware('auth');
 
 Route::get('register/end', 'RegisterController@end')->middleware('auth');
@@ -37,6 +37,8 @@ Route::post('register/end', 'RegisterController@post_end')->middleware('auth');
 Route::get('answer/{answer}', 'AnswerController@index')->middleware('auth');
 Route::post('answer/confirm', 'AnswerController@post_confirm')->middleware('auth');
 Route::post('answer/end', 'AnswerController@post_end')->middleware('auth');
+
+Route::get('mypage/result','MypageController@result')->middleware('auth');
 
 /*twitter*/
 Route::get('twitter','TwitterController@RedirectToProvider');
