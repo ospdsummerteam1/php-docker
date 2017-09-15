@@ -94,12 +94,16 @@ class TwitterController extends Controller
 //        var_dump(Session::get('twitter_access_token'), Session::get('twitter_access_secret'));
         Twitter::reconfig($request_token);
 
+        $req = $request->all();
+        $screen_name = $req["screen_name"];
+        $text = $req["text"];
+
         try
         {
-            $user_id = Session::get('twitter_user_id');
-            $user = Twitter::getUsers(['user_id' => $user_id]);
+            $user = Twitter::getUsers(['screen_name' => "$screen_name"]);
+            var_dump($user);
             $response = Twitter::postDM(['screen_name'=> "$user->screen_name", 'user_id'=> "$user->id",
-                'text' => "そろそろ相手の方に連絡してみませんか"]);
+                'text' => $text]);
         }
         catch (Exception $e)
         {
