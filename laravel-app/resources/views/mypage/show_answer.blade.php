@@ -3,36 +3,22 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="modal fade" id="sampleModal" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-                        </div>
-                        <br>
-                        <div class="modal-body">
-                            <div class="quesion1">
-                                <p align="left">質問１.あああああああああああああああ</p>
-                                <p align="left">いいいいいいいいいいいいいいいいい（回答１）</p>
-                            </div>
-                            <br>
-                            <div class="answer2">
-                                <p align="left">質問２.あああああああああああああああ</p>
-                                <p align="left">いいいいいいいいいいいいいいいいい（回答２）</p>
-                            </div>
-                            <br>
-                            <div class="answer2">
-                                <p align="left">質問３.あああああああああああああああ</p>
-                                <p align="left">いいいいいいいいいいいいいいいいい（回答３）</p>
-                            </div>
-                            <br>
-                        </div>
-                        <br>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default">断る</button>
-                            <button type="button" class="btn btn-primary">話す</button>
-                        </div>
-                    </div>
+            @foreach($data as $tmp)
+                <div class="answer1 col-md-4">
+                    <h3>{{'質問 : '.$tmp['question']}}</h3>
+                    <p>{{"回答 : ".$tmp['answer']}}</p>
                 </div>
-            </div>
+            @endforeach
+        </div>
+        <div class="row">
+            <form action="{{url('mypage/result')}}" method="get" class="col-md-6  text-center">
+                <input type="hidden" name="not" value="{{$data[0]['application_id']}}">
+                <input type="submit" value="断る" class="btn btn-lg btn-default ">
+            </form>
+            <form action="{{url('mypage/result')}}" method="get" class="col-md-6 text-center">
+                <input type="hidden" name="yes" value="{{$data[0]['application_id']}}">
+                <input type="submit" value="話す" class="btn btn-lg btn-primary">
+            </form>
+        </div>
+    </div>
 @stop

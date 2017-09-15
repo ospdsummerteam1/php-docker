@@ -39,9 +39,9 @@ class RegisterController extends Controller
             ]);
 
       Question::query()->insert([
-               ['question' => "question1", 'item_id' => $id],
-               ['question' => "question2", 'item_id' => $id],
-               ['question' => "question3", 'item_id' => $id]
+               ['question' => $item["question1"], 'item_id' => $id],
+               ['question' => $item["question2"], 'item_id' => $id],
+               ['question' => $item["question3"], 'item_id' => $id]
             ]);
       $request->session()->forget('item');
       return view('register.end',compact("item"));
